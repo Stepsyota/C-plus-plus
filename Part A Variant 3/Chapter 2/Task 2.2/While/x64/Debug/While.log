@@ -1,0 +1,4 @@
+﻿  While.cpp
+C:\Users\steps\OneDrive\Рабочий стол\Develop\C++\Part A Variant 3\Chapter 2\Task 2.2\While\While.cpp(15,13): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\steps\OneDrive\Рабочий стол\Develop\C++\Part A Variant 3\Chapter 2\Task 2.2\While\While.cpp(17,12): warning C4101: xi: неиспользованная локальная переменная
+  While.vcxproj -> C:\Users\steps\OneDrive\Рабочий стол\Develop\C++\Part A Variant 3\Chapter 2\Task 2.2\While\x64\Debug\While.exe
