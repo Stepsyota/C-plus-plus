@@ -1,0 +1,3 @@
+﻿  Task 1.2.cpp
+C:\Users\steps\Desktop\Now\Task 1.2\Task 1.2.cpp(113): warning C4715: find_length_str: значение возвращается не при всех путях выполнения
+  Task 1.2.vcxproj -> C:\Users\steps\Desktop\Now\Task 1.2\x64\Debug\Task 1.2.exe
