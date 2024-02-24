@@ -1,3 +1,0 @@
-﻿  Task 5.2.1.cpp
-C:\Users\steps\Desktop\December\Task 5.2.1\Task 5.2.1.cpp(46,14): error C2440: =: невозможно преобразовать "void" в "int"
-C:\Users\steps\Desktop\December\Task 5.2.1\Task 5.2.1.cpp(46,14): message : Выражение, имеющее тип void, нельзя преобразовать в другой тип

@@ -1,4 +1,0 @@
-﻿  Task 3.6.cpp
-C:\Users\steps\OneDrive\Рабочий стол\Develop\C++\Part A Variant 3\Chapter 3\Task 3.6\Task 3.6.cpp(37,16): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-C:\Users\steps\OneDrive\Рабочий стол\Develop\C++\Part A Variant 3\Chapter 3\Task 3.6\Task 3.6.cpp(47,23): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-  Task 3.6.vcxproj -> C:\Users\steps\OneDrive\Рабочий стол\Develop\C++\Part A Variant 3\Chapter 3\Task 3.6\x64\Debug\Task 3.6.exe

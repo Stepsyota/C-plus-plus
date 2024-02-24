@@ -1,4 +1,0 @@
-﻿  For.cpp
-C:\Users\steps\OneDrive\Рабочий стол\Develop\C++\Part A Variant 3\Chapter 2\Task 2.2\For\For.cpp(15,13): warning C4305: инициализация: усечение из "double" в "float"
-C:\Users\steps\OneDrive\Рабочий стол\Develop\C++\Part A Variant 3\Chapter 2\Task 2.2\For\For.cpp(17,12): warning C4101: xi: неиспользованная локальная переменная
-  For.vcxproj -> C:\Users\steps\OneDrive\Рабочий стол\Develop\C++\Part A Variant 3\Chapter 2\Task 2.2\For\x64\Debug\For.exe

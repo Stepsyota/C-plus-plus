@@ -1,4 +1,0 @@
-C:\Users\steps\OneDrive\Рабочий стол\December 1\December\Task 6.1\x64\Debug\Task 6.1.exe
-C:\Users\steps\OneDrive\Рабочий стол\December 1\December\Task 6.1❌\x64\Debug\Task 6.1.exe
-C:\Users\steps\Desktop\December\Task 6.1❌\x64\Debug\Task 6.1.exe
-C:\Users\steps\OneDrive\Рабочий стол\Develop\C++\Part A Variant 3\Chapter 6\Task 6.1\x64\Debug\Task 6.1.exe
