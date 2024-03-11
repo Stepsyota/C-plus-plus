@@ -1,0 +1,22 @@
+﻿  Task 1.6.cpp
+C:\Users\steps\OneDrive\Рабочий стол\Ready for what\Task 1.6 sort c-stroki\Task 1.6.cpp(154,23): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+  C:\Users\steps\OneDrive\Рабочий стол\Ready for what\Task 1.6 sort c-stroki\Task 1.6.cpp(154,23):
+  контекст создания экземпляра шаблона (сначала самый старый)
+  	C:\Users\steps\OneDrive\Рабочий стол\Ready for what\Task 1.6 sort c-stroki\Task 1.6.cpp(53,5):
+  	выполняется компиляция ссылки на экземпляр шаблон функции "void fill_array<int>(T [],int)"
+          with
+          [
+              T=int
+          ]
+  
+C:\Users\steps\OneDrive\Рабочий стол\Ready for what\Task 1.6 sort c-stroki\Task 1.6.cpp(154,23): warning C4244: инициализация: преобразование "double" в "char", возможна потеря данных
+  C:\Users\steps\OneDrive\Рабочий стол\Ready for what\Task 1.6 sort c-stroki\Task 1.6.cpp(154,23):
+  контекст создания экземпляра шаблона (сначала самый старый)
+  	C:\Users\steps\OneDrive\Рабочий стол\Ready for what\Task 1.6 sort c-stroki\Task 1.6.cpp(62,5):
+  	выполняется компиляция ссылки на экземпляр шаблон функции "void fill_array<char>(T [],int)"
+          with
+          [
+              T=char
+          ]
+  
+  Task 1.6.vcxproj -> C:\Users\steps\OneDrive\Рабочий стол\Ready for what\Task 1.6 sort c-stroki\x64\Debug\Task 1.6.exe
