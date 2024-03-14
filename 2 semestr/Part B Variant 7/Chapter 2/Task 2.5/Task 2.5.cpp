@@ -114,7 +114,7 @@ struct LinkedList
 	{
 		for (int i = index_start; i < index_end; ++i)
 		{
-			for (int j = index_start + 1; j <= index_end; ++j)
+			for (int j = i + 1; j <= index_end; ++j)
 			{
 				if (array[i] == array[j])
 				{
