@@ -95,6 +95,10 @@ struct LinkedList
 		{
 			return;
 		}
+		else if (index_to_delete == index_start)
+		{
+			index_start++;
+		}
 		else
 		{
 			for (int j = index_to_delete; j < index_end; ++j)
@@ -110,7 +114,7 @@ struct LinkedList
 	{
 		for (int i = index_start; i < index_end; ++i)
 		{
-			for (int j = i + 1; j <= index_end; ++j)
+			for (int j = index_start + 1; j <= index_end; ++j)
 			{
 				if (array[i] == array[j])
 				{
@@ -126,18 +130,17 @@ struct LinkedList
 		{
 			for (int j = index_end; j > i; --j)
 			{
-				//check();
 				if (array[i] == array[j])
 				{
 					delete_element(j);
-					//check();
 					compare = 1;
+					j++;
 				}
 			}
 			if (compare)
 			{
 				delete_element(i);
-				//check();
+				i--;
 			}
 			compare = 0;
 		}
@@ -212,7 +215,6 @@ int main()
 
 	form_list(L1, L2, size);
 
-
 	// For check
 	/*L1.output_list();
 	L1.insert_by_index('k', 2);
@@ -220,8 +222,8 @@ int main()
 	L1.insert_by_index('f', 0);
 	L1.output_list();*/
 
-	/*L1.output_list();
-	L1.search_element('g');*/
+	//L1.output_list();
+	//L1.search_element('q');
 
 	return 0;
 }
