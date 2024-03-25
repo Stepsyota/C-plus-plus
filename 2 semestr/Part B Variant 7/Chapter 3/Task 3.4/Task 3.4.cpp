@@ -155,7 +155,6 @@ void fill_file_by_needed_grade(const char* main_file_name, const char* result_fi
 			main_file >> student.gender;
 			main_file >> student.course;
 			main_file >> student.grade;
-			main_file >> student.id;
 			if (student.grade >= needed_grade && student.course == needed_course)
 			{
 				add_element_in_another_file(result_file, student);
@@ -242,35 +241,35 @@ void add_element_to_the_end(const char* file_name)
 	student.fill_info(get_size_data(file_name));
 	// Передача ID студенту в качестве его порядкового номера
 	
-	file << student.id << '\n';
+	file << student.id << ' ';
 	file << student.full_name << ' ';
 	file << student.age << ' ';
 	file << student.gender << ' ';
 	file << student.course << ' ';
-	file << student.grade << ' ';
+	file << student.grade << '\n';
 	file.close();
 }
 
 void add_element_in_another_file(ofstream& file, Student& student)
 {
-	file << student.id << '\n';
+	file << student.id << ' ';
 	file << student.full_name << ' ';
 	file << student.age << ' ';
 	file << student.gender << ' ';
 	file << student.course << ' ';
-	file << student.grade << ' ';
+	file << student.grade << '\n';
 	
 }
 void add_element(ofstream& file, const char* file_name, int number)
 {
 	Student student;
 	student.fill_info(get_size_data(file_name)); // Передача ID студенту в качестве его порядкового номера
-	file << student.id << '\n';
+	file << student.id << ' ';
 	file << student.full_name << ' ';
 	file << student.age << ' ';
 	file << student.gender << ' ';
 	file << student.course << ' ';
-	file << student.grade << ' ';	
+	file << student.grade << '\n';	
 }
 int get_size_data(const char* file_name)
 {
@@ -283,10 +282,8 @@ int get_size_data(const char* file_name)
 		char last_name[30];
 		char patronymic[30];
 		file >> student.id;
-		
 		while (!file.fail())
 		{
-			file >> student.id;
 			file >> first_name;
 			file >> last_name;
 			file >> patronymic;
@@ -294,6 +291,7 @@ int get_size_data(const char* file_name)
 			file >> student.gender;
 			file >> student.course;
 			file >> student.grade;
+			file >> student.id;
 			size++;
 		}
 		file.close();
@@ -316,7 +314,6 @@ void edit_student_by_ID(const char* file_name, int needed_id) // Not finish
 	file >> student.id;
 	while (!file.fail())
 	{
-		file >> student.id;
 		if (student.id == needed_id)
 		{
 			int choice = 0;
