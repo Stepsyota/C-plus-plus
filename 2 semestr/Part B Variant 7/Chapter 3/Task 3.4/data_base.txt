@@ -1,0 +1,7 @@
+0 Samuel Frederick Smith 29 0 4 7.1
+1 Kanye Omari West 43 0 3 7.4
+2 Samuel Frederick Smith 44 1 2 6.5
+3 Konstantin Edouardovich Tsiolkovskii 28 0 4 3.1
+4 Konstantin Edouardovich Tsiolkovskii 30 0 1 8.1
+5 Ivan Sergeyevich Turgenev 23 0 2 9.2
+6 Karnitskaya Evelina Alekseevna 35 1 3 8.7

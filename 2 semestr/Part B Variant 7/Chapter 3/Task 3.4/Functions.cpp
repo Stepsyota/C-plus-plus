@@ -26,7 +26,7 @@ void make_student_full_name(Student& student, char first_name[], char last_name[
 	}
 	student.full_name[counter_now] = '\0';
 }
-void edit_student_by_ID(const char* file_main_name) // Not finish
+void edit_student_by_ID(const char* file_main_name)
 {
 	int needed_id = -1;
 	do
@@ -55,9 +55,9 @@ void edit_student_by_ID(const char* file_main_name) // Not finish
 	file >> student.id;
 	while (!file.fail())
 	{
-		char first_name[80];
-		char last_name[80];
-		char patronymic[80];
+		char first_name[30];
+		char last_name[30];
+		char patronymic[30];
 		file >> first_name;
 		file >> last_name;
 		file >> patronymic;
@@ -140,7 +140,7 @@ void edit_student_by_ID(const char* file_main_name) // Not finish
 	clear_file(file_main_name);
 	redefine_two_files(file_main_name, file_edit_name);
 }
-void delete_student_by_ID(const char* file_main_name) // Not finish
+void delete_student_by_ID(const char* file_main_name)
 {
 	int needed_id = -1;
 	do
@@ -165,9 +165,9 @@ void delete_student_by_ID(const char* file_main_name) // Not finish
 	file >> student.id;
 	while (!file.fail())
 	{
-		char first_name[80];
-		char last_name[80];
-		char patronymic[80];
+		char first_name[30];
+		char last_name[30];
+		char patronymic[30];
 		file >> first_name;
 		file >> last_name;
 		file >> patronymic;
@@ -187,40 +187,14 @@ void delete_student_by_ID(const char* file_main_name) // Not finish
 	clear_file(file_main_name);
 	redefine_two_files(file_main_name, file_edit_name);
 }
-void redefine_two_files(const char* file_to_edit_info_name, const char* temp_file_with_main_info_name)
+void redefine_two_files(const char* file_old_name, const char* file_new_name)
 {
-	ifstream file_main(temp_file_with_main_info_name);
-	ofstream file_edit(file_to_edit_info_name);
-
-	if (!file_main.is_open() || !file_edit.is_open())
-	{
-		file_main.close();
-		file_edit.close();
-		cout << "Cant open";
-		exit(2);
+	remove(file_old_name);
+	if (rename(file_new_name, file_old_name) != 0)
+	{ 
+		cout << "Error with rename file";
+		exit(9);
 	}
-	Student student;
-	file_main >> student.id;
-	while (!file_main.fail())
-	{
-		char first_name[80];
-		char last_name[80];
-		char patronymic[80];
-		file_main >> first_name;
-		file_main >> last_name;
-		file_main >> patronymic;
-		make_student_full_name(student, first_name, last_name, patronymic);
-		file_main >> student.age;
-		file_main >> student.gender;
-		file_main >> student.course;
-		file_main >> student.grade;
-		add_student_to_the_end(file_to_edit_info_name, student);
-		file_main >> student.id;
-	}
-
-	file_main.close();
-	file_edit.close();
-	remove(temp_file_with_main_info_name);
 }
 void add_element_in_another_file(ofstream& file, Student& student)
 {
@@ -323,9 +297,9 @@ void read_file(const char* file_name)
 	file >> student.id;
 	while (!file.fail())
 	{
-		char first_name[80];
-		char last_name[80];
-		char patronymic[80];
+		char first_name[30];
+		char last_name[30];
+		char patronymic[30];
 		file >> first_name;
 		file >> last_name;
 		file >> patronymic;

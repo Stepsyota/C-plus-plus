@@ -7,7 +7,7 @@ using namespace std;
 
 struct Student
 {
-	char full_name[60];
+	char full_name[90];
 	int age;
 	bool gender;
 	double grade;

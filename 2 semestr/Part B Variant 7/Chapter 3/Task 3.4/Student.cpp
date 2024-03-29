@@ -8,7 +8,7 @@ void Student::fill_info(int counter = 0)
 	age = rand() % 28 + 17;
 
 	char all_names[250] = { "Kanye Omari West | Samuel Frederick Smith | Elizabeth Alexandra Mary | Dmitriy Aleksandrovich Hvorostovsky | Konstantin Edouardovich Tsiolkovskii | Karnitskaya Evelina Alekseevna | John Fitzgerald Kennedy | Ivan Sergeyevich Turgenev\0" };
-	int index[100] = { 0, 15,19, 40,44, 67,71, 105,109, 144,148, 177,181, 203, 207, 231 };
+	int index[16] = { 0, 15,19, 40,44, 67,71, 105,109, 144,148, 177,181, 203, 207, 231 };
 	int start = rand() % 8 * 2;
 	int end = start + 1;
 	int k = 0;
