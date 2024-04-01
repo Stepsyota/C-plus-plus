@@ -36,7 +36,7 @@ void edit_student_by_ID(const char* file_main_name)
 	} while (needed_id < 0 || needed_id > get_size_file(file_main_name));
 
 	int choice = 0;
-	cout << "What do you want to change?\n1. First name\n2. Last name\n3. Patronymic\n4. Age\n5. Gender\n6. Course\n7. Grade\n";
+	cout << "What do you want to change?\n1. Full name\n2. Age\n3. Gender\n4. Course\n5. Grade\n";
 	cin >> choice;
 
 	const char* file_edit_name = "file_edit.bin";
@@ -55,12 +55,7 @@ void edit_student_by_ID(const char* file_main_name)
 	file.read(reinterpret_cast<char*>(&student.id), sizeof(int));
 	while (!file.fail())
 	{
-		char first_name[30];
-		char last_name[30];
-		char patronymic[30];
-		file.read(first_name, sizeof(char[30]));
-		file.read(last_name, sizeof(char[30]));
-		file.read(patronymic, sizeof(char[30]));
+		file.read(student.full_name, sizeof(char[90]));
 		file.read(reinterpret_cast<char*>(&student.age), sizeof(int));
 		file.read(reinterpret_cast<char*>(&student.gender), sizeof(bool));
 		file.read(reinterpret_cast<char*>(&student.course), sizeof(int));
@@ -72,23 +67,17 @@ void edit_student_by_ID(const char* file_main_name)
 			{
 			case 1:
 			{
+				char first_name[30];
+				char last_name[30];
+				char patronymic[30];
 				cout << "Enter info: ";
 				cin >> first_name;
+				cin >> last_name;
+				cin >> patronymic;
+				make_student_full_name(student, first_name, last_name, patronymic);
 				break;
 			}
 			case 2:
-			{
-				cout << "Enter info: ";
-				cin >> last_name;
-				break;
-			}
-			case 3:
-			{
-				cout << "Enter info: ";
-				cin >> patronymic;
-				break;
-			}
-			case 4:
 			{
 				do
 				{
@@ -97,7 +86,7 @@ void edit_student_by_ID(const char* file_main_name)
 				} while (student.age < 0 || student.age > 100);
 				break;
 			}
-			case 5:
+			case 3:
 			{
 				do
 				{
@@ -106,7 +95,7 @@ void edit_student_by_ID(const char* file_main_name)
 				} while (student.gender < 0 || student.gender > 1);
 				break;
 			}
-			case 6:
+			case 4:
 			{
 				do
 				{
@@ -115,7 +104,7 @@ void edit_student_by_ID(const char* file_main_name)
 				} while (student.course < 0 || student.course > 4);
 				break;
 			}
-			case 7:
+			case 5:
 			{
 				do
 				{
@@ -131,7 +120,6 @@ void edit_student_by_ID(const char* file_main_name)
 			}
 			}
 		}
-		make_student_full_name(student, first_name, last_name, patronymic);
 		add_element_in_another_file(file_edit, student);
 		file.read(reinterpret_cast<char*>(&student.id), sizeof(int));
 	}
@@ -165,19 +153,13 @@ void delete_student_by_ID(const char* file_main_name)
 	file.read(reinterpret_cast<char*>(&student.id), sizeof(int));
 	while (!file.fail())
 	{
-		char first_name[30];
-		char last_name[30];
-		char patronymic[30];
-		file.read(first_name, sizeof(char[30]));
-		file.read(last_name, sizeof(char[30]));
-		file.read(patronymic, sizeof(char[30]));
+		file.read(student.full_name, sizeof(char[90]));
 		file.read(reinterpret_cast<char*>(&student.age), sizeof(int));
 		file.read(reinterpret_cast<char*>(&student.gender), sizeof(bool));
 		file.read(reinterpret_cast<char*>(&student.course), sizeof(int));
 		file.read(reinterpret_cast<char*>(&student.grade), sizeof(double));
 		if (student.id != needed_id)
 		{
-			make_student_full_name(student, first_name, last_name, patronymic);
 			add_element_in_another_file(file_edit, student);
 		}
 		file.read(reinterpret_cast<char*>(&student.id), sizeof(int));
@@ -260,16 +242,10 @@ void make_file_with_needed_students(const char* main_file_name, const char* resu
 		exit(5);
 	}
 	Student student;
-	char first_name[30];
-	char last_name[30];
-	char patronymic[30];
 	main_file.read(reinterpret_cast<char*>(&student.id), sizeof(int));
 	while (!main_file.fail())
 	{
-		main_file.read(first_name, sizeof(char[30]));
-		main_file.read(last_name, sizeof(char[30]));
-		main_file.read(patronymic, sizeof(char[30]));
-		make_student_full_name(student, first_name, last_name, patronymic);
+		main_file.read(student.full_name, sizeof(char[90]));
 		main_file.read(reinterpret_cast<char*>(&student.age), sizeof(int));
 		main_file.read(reinterpret_cast<char*>(&student.gender), sizeof(bool));
 		main_file.read(reinterpret_cast<char*>(&student.course), sizeof(int));
@@ -295,13 +271,7 @@ void read_file(const char* file_name)
 	file.read(reinterpret_cast<char*>(&student.id), sizeof(int));
 	while (!file.fail())
 	{
-		char first_name[30];
-		char last_name[30];
-		char patronymic[30];
-		file.read(first_name, sizeof(char[30]));
-		file.read(last_name, sizeof(char[30]));
-		file.read(patronymic, sizeof(char[30]));
-		make_student_full_name(student, first_name, last_name, patronymic);
+		file.read(student.full_name, sizeof(char[90]));
 		file.read(reinterpret_cast<char*>(&student.age), sizeof(int));
 		file.read(reinterpret_cast<char*>(&student.gender), sizeof(bool));
 		file.read(reinterpret_cast<char*>(&student.course), sizeof(int));
@@ -321,15 +291,11 @@ int get_size_file(const char* file_name)
 		exit(7);
 	}
 	Student student;
-	char first_name[30];
-	char last_name[30];
-	char patronymic[30];
+
 	file.read(reinterpret_cast<char*>(&student.id), sizeof(int));
 	while (!file.fail())
 	{
-		file.read(first_name, sizeof(char[30]));
-		file.read(last_name, sizeof(char[30]));
-		file.read(patronymic, sizeof(char[30]));
+		file.read(student.full_name, sizeof(char[90]));
 		file.read(reinterpret_cast<char*>(&student.age), sizeof(int));
 		file.read(reinterpret_cast<char*>(&student.gender), sizeof(bool));
 		file.read(reinterpret_cast<char*>(&student.course), sizeof(int));
