@@ -7,6 +7,8 @@ int main()
 {
     vector<int> v1(7);
     cout << "v1:\t";    v1.output_array();
+    v1.fill_random();
+    cout << "v1:\t";    v1.output_array();
 
     vector<int> v2(v1);
     cout << "v2:\t";    v2.output_array();
@@ -22,6 +24,6 @@ int main()
     v5 = move(v2);
     cout << "v5:\t";    v5.output_array();
     cout << "v2:\t";    v2.output_array();
-    cout << "\n\n\n";
+    //cout << "\n\n\n";
     //make_task_2_1();
 }

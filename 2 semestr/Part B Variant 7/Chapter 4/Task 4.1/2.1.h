@@ -6,4 +6,4 @@
 
 using namespace std;
 
-//void make_task_2_1();
+void make_task_2_1();

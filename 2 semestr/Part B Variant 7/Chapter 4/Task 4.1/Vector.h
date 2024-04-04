@@ -28,6 +28,8 @@ public:
 	size_t get_size() const;
 	size_t get_capacity() const;
 	void output_array();
+	void fill_random();
+	void set_size(size_t);
 };
 
 
@@ -63,14 +65,14 @@ vector<T>::vector()	// Конструктор по умолчанию
 }
 
 template<typename T>
-vector<T>::vector(size_t size)	// Конструктор с параметром
-{
+vector<T>::vector(size_t size) // Конструктор с параметрами для задания элементу определеного значения
+{	
 	this->size = size;
 	this->capacity = size;
 	this->seq = new T[capacity]{ 0 };
 	for (int i = 0; i < this->size; ++i)
 	{
-		this->seq[i] = rand() % 100;
+		this->seq[i] = T(0);
 	}
 }
 
@@ -150,4 +152,13 @@ template<typename T>
 vector<T>::~vector()	// Деструктор
 {
 	delete[] this->seq;
+}
+
+template<typename T>
+void vector<T>::fill_random()
+{
+	for (int i = 0; i < this->size; ++i)
+	{
+		seq[i] = rand() % 100;
+	}
 }
