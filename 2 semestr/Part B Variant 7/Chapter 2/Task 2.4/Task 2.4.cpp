@@ -19,7 +19,7 @@ struct Node
 };
 
 struct LinkedList {
-	Node *head, *tail;
+	Node* head, * tail;
 	int counter;
 
 	LinkedList()
@@ -137,6 +137,22 @@ struct LinkedList {
 		}
 	}
 
+
+	void delete_all_similar_elements()
+	{
+		for (int i = 0; i < size() - 1; ++i)
+		{
+			for (int j = i + 1; j < size(); ++j)
+			{
+				if (get_node(i)->symbol == get_node(j)->symbol)
+					// get node - O(N)
+				{
+					delete_after(get_node(i - 1));
+					delete_after(get_node(j - 2));
+				}
+			}
+		}
+	}
 	void output_list() const
 	{
 		for (Node* l = head; l; l = l->next)
@@ -198,7 +214,7 @@ void form_list(LinkedList& L1, LinkedList& L2)
 	L.merge_lists(L1, L2); // O(2(N^2))
 	cout << setw(35) << right << "L after merge L1 and L2: ";
 	L.output_list(); // O(N)
-	L.delete_similar_elements(); // O(N^3)
+	L.delete_all_similar_elements(); // O(N^3)
 	cout << setw(35) << right << "Result L: ";
 	L.output_list(); // O(N)
 }
