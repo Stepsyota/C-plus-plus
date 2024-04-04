@@ -2,9 +2,8 @@
 
 #include <iostream>
 #include <math.h>
-#include <cstdlib>
-#include <ctime>
+#include "vector.h"
 
 using namespace std;
 
-void make_task_2_1();
+//void make_task_2_1();
