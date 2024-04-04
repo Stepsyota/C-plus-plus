@@ -209,6 +209,7 @@ void forward_list<T>::pop_similar_element()
 			if (get_node(i)->data == get_node(j)->data)
 			{
 				pop_after(get_node(j - 1));
+				j--;
 			}
 		}
 	}
@@ -219,16 +220,30 @@ void forward_list<T>::pop_all_similar_elements()
 {
 	for (size_t i = 0; i < this->size - 1; ++i)
 	{
+		bool compare = 0;
 		for (size_t j = i + 1; j < this->size; ++j)
 		{
 			if (get_node(i)->data == get_node(j)->data)
 			{
-				pop_after(get_node(i - 1));
-				pop_after(get_node(j - 2));
+				pop_after(get_node(j - 1));
+				j--;
+				compare = 1;
 			}
+		}
+		if (compare)
+		{
+			if (i == 0)
+			{
+				pop_front();
+			}
+			else
+			{
+				pop_after(get_node(i - 1));
+			}
+			i--;
 		}
 	}
 }
 
-//void make_task_2_4();
-//void form_list(LinkedList&, LinkedList&);
+void make_task_2_4();
+void form_list(forward_list<char>&, forward_list<char>&);
