@@ -1,6 +1,0 @@
-﻿  Functions.cpp
-D:\Development\Programming\C++\2 semestr\Part B Variant 7\Chapter 3\Task 3.3\Functions.cpp(95,21): warning C4804: <: небезопасное использование типа "bool" в операции
-D:\Development\Programming\C++\2 semestr\Part B Variant 7\Chapter 3\Task 3.3\Functions.cpp(95,43): warning C4804: >: небезопасное использование типа "bool" в операции
-  Task 3.3.cpp
-  Создание кода...
-  Task 3.3.vcxproj -> D:\Development\Programming\C++\2 semestr\Part B Variant 7\Chapter 3\Task 3.3\x64\Debug\Task 3.3.exe

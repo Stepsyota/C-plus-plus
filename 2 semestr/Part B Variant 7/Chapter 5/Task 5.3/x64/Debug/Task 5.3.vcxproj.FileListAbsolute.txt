@@ -1,2 +1,0 @@
-C:\Users\steps\Desktop\OOP\Info\Chapter 5\Task 5.3\x64\Debug\Task 5.3.exe
-D:\Development\Programming\C++\2 semestr\Part B Variant 7\Chapter 5\Task 5.3\x64\Debug\Task 5.3.exe
