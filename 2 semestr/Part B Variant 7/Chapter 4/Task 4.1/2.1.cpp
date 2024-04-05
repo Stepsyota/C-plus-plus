@@ -64,5 +64,6 @@ void make_task_2_1()
 			cout << i << ' ';
 		}
 	}
+	cout << endl;
 	return;
 }
