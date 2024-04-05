@@ -31,10 +31,16 @@ private:
 public:
 	forward_list();
 	forward_list(size_t);
+	forward_list(const forward_list<T>&);
+	void operator = (const forward_list<T>&);
+	forward_list(forward_list<T>&&);
+	void operator = (forward_list<T>&&);
 	~forward_list();
 
-	size_t get_size();
+	size_t get_size() const;
+	Node<T>* get_head() const;
 	T& operator[](size_t);
+
 	bool empty();
 	Node<T>* get_node(size_t);
 	void output_list();
@@ -44,6 +50,7 @@ public:
 	void push_back(T);
 	void fill_list();
 	void merge_lists(forward_list<T>&, forward_list<T>&);
+	void find_element(T);
 
 	void pop_front();
 	void pop_after(Node<T>*);
@@ -52,7 +59,7 @@ public:
 };
 
 template <typename T>
-forward_list<T>::forward_list()
+forward_list<T>::forward_list()	// Конструктор по умолчанию
 {
 	this->head = nullptr;
 	this->tail = nullptr;
@@ -60,11 +67,112 @@ forward_list<T>::forward_list()
 }
 
 template <typename T>
-forward_list<T>::forward_list(size_t size)
+forward_list<T>::forward_list(size_t size)	// Конструктор с параметром
 {
 	this->head = nullptr;
 	this->tail = nullptr;
 	this->size = size;
+}
+
+template <typename T>
+forward_list<T>::forward_list(const forward_list<T>& other)	// Конструктор копирования
+{
+	this->size = 0;
+	this->head = nullptr;
+	this->tail = nullptr;
+	for (Node<T>* n = other.get_head(); n; n = n->next)
+	{
+		Node<T>* item = new Node<T>(n->data, nullptr);
+		if (!this->head)
+		{
+			this->head = item;
+		}
+		else
+		{
+			this->tail->next = item;
+		}
+		this->tail = item;
+		this->size++;
+	}
+}
+
+template<typename T>
+void forward_list<T>::operator = (const forward_list<T>& other) // Перегрузка оператора = для копирования
+{
+	this->size = 0;
+	this->head = nullptr;
+	this->tail = nullptr;
+	for (Node<T>* n = other.get_head(); n; n = n->next)
+	{
+		Node<T>* item = new Node<T>(n->data, nullptr);
+		if (!this->head)
+		{
+			this->head = item;
+		}
+		else
+		{
+			this->tail->next = item;
+		}
+		this->tail = item;
+		this->size++;
+	}
+}
+
+
+template <typename T>
+forward_list<T>::forward_list(forward_list<T>&& other)	// Конструктор перемещения
+{
+	this->size = 0;
+	this->head = nullptr;
+	this->tail = nullptr;
+	for (Node<T>* n = other.get_head(); n; n = n->next)
+	{
+		Node<T>* item = new Node<T>(n->data, nullptr);
+		if (!this->head)
+		{
+			this->head = item;
+		}
+		else
+		{
+			this->tail->next = item;
+		}
+		this->tail = item;
+		this->size++;
+	}
+
+	size_t counter = other.get_size();
+	for (size_t i = 0; i < counter; ++i)
+	{
+		other.pop_front();
+	}
+}
+
+template<typename T>
+void forward_list<T>::operator = (forward_list<T>&& other) // Перегрузка оператора = для перемещения
+{
+	this->size = 0;
+	this->head = nullptr;
+	this->tail = nullptr;
+	for (Node<T>* n = other.get_head(); n; n = n->next)
+	{
+		Node<T>* item = new Node<T>(n->data, nullptr);
+		if (!this->head)
+		{
+			this->head = item;
+		}
+		else
+		{
+			this->tail->next = item;
+		}
+		this->tail = item;
+		this->size++;
+	}
+
+	size_t counter = other.get_size();
+	for (size_t i = 0; i < counter; ++i)
+	{
+		other.pop_front();
+	}
 }
 
 template <typename T>
@@ -87,9 +195,15 @@ void forward_list<T>::output_list()
 }
 
 template <typename T>
-size_t forward_list<T>::get_size()
+size_t forward_list<T>::get_size() const
 {
 	return this->size;
+}
+
+template <typename T>
+Node<T>* forward_list<T>::get_head() const
+{
+	return this->head;
 }
 
 template <typename T>
@@ -171,6 +285,24 @@ void forward_list<T>::merge_lists(forward_list<T>& list1, forward_list<T>& list2
 	{
 		push_back(list2[i]);
 	}
+}
+
+template <typename T>
+void forward_list<T>::find_element(T element)
+{
+	size_t place = 0;
+	for (Node<T>* l = this->head; l; l = l->next)
+	{
+		if (l->data == element)
+		{
+			cout << "Element " << element << " is find on a " << place << " place\nHis adress: \t" << l;
+			cout << endl << "Data:\t" << l->data;
+			return;
+		}
+		place++;
+	}
+	cout << "Element isnt find";
+	return;
 }
 
 template <typename T>
