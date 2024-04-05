@@ -44,7 +44,34 @@ void output_list(forward_list<char> list)
 	}
 	cout << endl;
 }
-void delete_similar_elements(forward_list<char>& list)
+void delete_similar_element(forward_list<char>& list)
+{
+	auto current_1 = list.begin();
+	auto current_1_prev = list.begin();
+
+	while (current_1 != list.end())
+	{
+		auto current_2 = next(current_1);
+		auto current_2_prev = current_1;
+		bool delete_element = 0;
+		while (current_2 != list.end())
+		{
+			if (*current_1 == *current_2 && next(current_1) != list.end())
+			{
+				current_2 = next(current_2);
+				list.erase_after(current_2_prev);
+				delete_element = 1;
+				continue;
+			}
+			current_2_prev = current_2;
+			current_2 = next(current_2);
+			//output_list(list);
+		}
+		current_1_prev = current_1;
+		current_1 = next(current_1);
+	}
+}
+void delete_all_similar_elements(forward_list<char>& list)
 {
 	auto current_1 = list.begin();
 	auto current_1_prev = list.begin();
@@ -112,8 +139,8 @@ forward_list<char> merge_lists(forward_list<char> list1, forward_list<char> list
 }
 void form_list(forward_list<char> list1, forward_list<char> list2)
 {
-	delete_similar_elements(list1);
-	delete_similar_elements(list2);
+	delete_similar_element(list1);
+	delete_similar_element(list2);
 	cout << setw(35) << right << "L1 after delete similar elements: ";
 	output_list(list1);
 	cout << setw(35) << right << "L2 after delete similar elements: ";
@@ -122,7 +149,7 @@ void form_list(forward_list<char> list1, forward_list<char> list2)
 	forward_list<char> result_list = merge_lists(list1, list2);
 	cout << setw(35) << right << "L after merge L1 and L2: ";
 	output_list(result_list);
-	delete_similar_elements(result_list);
+	delete_all_similar_elements(result_list);
 	cout << setw(35) << right << "Result L: ";
 	output_list(result_list);
 }
