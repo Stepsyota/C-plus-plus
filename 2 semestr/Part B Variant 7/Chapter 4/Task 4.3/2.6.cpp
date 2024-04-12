@@ -14,9 +14,30 @@ void make_task_2_6()
         cin >> n;
     } while (n < 1);
 
-    list<double> L;
-    L.fill_list(n);
+    List<double> L;
+    L.fill_list(2 * n);
     L.output_list();
-    cout << " = " << L.calc_expresion();
+    calc_expression(L);
     return;
+}
+
+template <typename T>
+void calc_expression(List<T>& list)
+{
+    T result = 0;
+    Node<T>* n = list.get_node(0);
+    Node<T>* p = list.get_node(list.get_size());
+    size_t number_of_iterations = list.get_size() / 2;
+    for (size_t i = 0; i < number_of_iterations; ++i)
+    {
+        cout << n->data << " * " << p->data;
+        if (i < number_of_iterations - 1)
+        {
+            cout << " + ";
+        }
+        result += n->data * p->data;
+        n = n->next;
+        p = p->prev;
+    }
+    cout << " = " << result << endl;
 }

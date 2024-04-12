@@ -1,4 +1,4 @@
-//образованный из чисел, встречающихся в исходной последовательности
+//	образованный из чисел, встречающихся в исходной последовательности
 //  более одного раза, по убыванию без повторений;
 
 #include "2.1.h"
@@ -23,7 +23,7 @@ void make_task_2_1()
 	
 
 	int max_size = pow(10, 4) + 1;
-	vector<int> index_array(max_size);
+	Vector<int> index_array(max_size);
 	int element;
 
 	switch (choice)

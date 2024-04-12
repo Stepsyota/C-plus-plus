@@ -2,6 +2,6 @@
 
 #include <iostream>
 #include "2.6.h"
-#include "list.h"
+#include "List.h"
 
 using namespace std;

@@ -7,4 +7,5 @@
 
 using namespace std;
 
-void make_tasK_4_3();
+void make_task_4_3();
+bool check_str(string);

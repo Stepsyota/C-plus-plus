@@ -9,7 +9,7 @@ using namespace std;
 
 
 template <typename T>
-class vector
+class Vector
 {
 private:
 	T* seq;
@@ -17,14 +17,14 @@ private:
 	size_t capacity;
 
 public:
-	vector();
-	vector(size_t);
-	vector(const vector&);
-	vector(vector&&);
-	~vector();
+	Vector();
+	Vector(size_t);
+	Vector(const Vector&);
+	Vector(Vector&&);
+	~Vector();
 
-	void operator =(const vector<T>&);
-	void operator = (vector<T>&&);
+	void operator =(const Vector<T>&);
+	void operator = (Vector<T>&&);
 	T& operator [] (const int);
 
 
@@ -37,25 +37,25 @@ public:
 };
 
 template<typename T>
-ostream& operator << (ostream&, vector<T>&);
+ostream& operator << (ostream&, Vector<T>&);
 template<typename T>
-istream& operator >> (istream&, vector<T>&);
+istream& operator >> (istream&, Vector<T>&);
 
 
 template<typename T>
-size_t vector<T>::get_size() const	// Метод получения size
+size_t Vector<T>::get_size() const	// Метод получения size
 {
 	return this->size;
 }
 
 template<typename T>
-size_t vector<T>::get_capacity() const	// Метод получения capacity
+size_t Vector<T>::get_capacity() const	// Метод получения capacity
 {
 	return this->capacity;
 }
 
 template<typename T>
-void vector<T>::output_array()	// Метод вывода элементов
+void Vector<T>::output_array()	// Метод вывода элементов
 {
 	for (int i = 0; i < this->size; ++i)
 	{
@@ -65,7 +65,7 @@ void vector<T>::output_array()	// Метод вывода элементов
 }
 
 template<typename T>
-vector<T>::vector()	// Конструктор по умолчанию
+Vector<T>::Vector()	// Конструктор по умолчанию
 {
 	this->size = 1;
 	this->capacity = 1;
@@ -73,7 +73,7 @@ vector<T>::vector()	// Конструктор по умолчанию
 }
 
 template<typename T>
-vector<T>::vector(size_t size) // Конструктор с параметрами для задания элементу определеного значения
+Vector<T>::Vector(size_t size) // Конструктор с параметрами для задания элементу определеного значения
 {	
 	this->size = size;
 	this->capacity = size;
@@ -85,7 +85,7 @@ vector<T>::vector(size_t size) // Конструктор с параметрами для задания элементу
 }
 
 template<typename T>
-vector<T>::vector(const vector& other) // Конструктор копирования
+Vector<T>::Vector(const Vector& other) // Конструктор копирования
 {
 	this->size = other.get_size();
 	this->capacity = other.get_capacity();
@@ -98,36 +98,7 @@ vector<T>::vector(const vector& other) // Конструктор копирования
 }
 
 template<typename T>
-vector<T>::vector(vector&& other) // Конструктор перемещения
-{
-	this->size = other.get_size();
-	this->capacity = other.get_capacity();
-	this->seq = new T[capacity]{};
-
-	for (int i = 0; i < this->size; ++i)
-	{
-		this->seq[i] = other.seq[i];
-		other.seq[i] = 0;	// ?!?
-	}
-	other.size = 0;
-	other.capacity = 0;
-}
-
-template<typename T>
-void vector<T>::operator = (const vector<T>& other) // Перегрузка оператора = для копирования
-{
-	this->size = other.get_size();
-	this->capacity = other.get_capacity();
-	this->array = new T[capacity]{};
-
-	for (int i = 0; i < this->size; ++i)
-	{
-		this->seq[i] = other.seq[i]; // ?!?
-	}
-}
-
-template<typename T>
-void vector<T>::operator = (vector<T>&& other)	// Перегрузка оператора = для перемещения
+Vector<T>::Vector(Vector&& other) // Конструктор перемещения
 {
 	this->size = other.get_size();
 	this->capacity = other.get_capacity();
@@ -143,7 +114,36 @@ void vector<T>::operator = (vector<T>&& other)	// Перегрузка оператора = для пер
 }
 
 template<typename T>
-T& vector<T>::operator [] (const int i)	// Перегрузка оператора []
+void Vector<T>::operator = (const Vector<T>& other) // Перегрузка оператора = для копирования
+{
+	this->size = other.get_size();
+	this->capacity = other.get_capacity();
+	this->array = new T[capacity]{};
+
+	for (int i = 0; i < this->size; ++i)
+	{
+		this->seq[i] = other.seq[i]; // ?!?
+	}
+}
+
+template<typename T>
+void Vector<T>::operator = (Vector<T>&& other)	// Перегрузка оператора = для перемещения
+{
+	this->size = other.get_size();
+	this->capacity = other.get_capacity();
+	this->seq = new T[capacity]{};
+
+	for (int i = 0; i < this->size; ++i)
+	{
+		this->seq[i] = other.seq[i];
+		other.seq[i] = 0;
+	}
+	other.size = 0;
+	other.capacity = 0;
+}
+
+template<typename T>
+T& Vector<T>::operator [] (const int i)	// Перегрузка оператора []
 {
 	if (i < 0)
 	{
@@ -157,35 +157,35 @@ T& vector<T>::operator [] (const int i)	// Перегрузка оператора []
 }
 
 template<typename T>
-ostream& operator << (ostream& out, vector<T>& vector)	// Перегрузка оператора <<
+ostream& operator << (ostream& out, Vector<T>& Vector)	// Перегрузка оператора <<
 {
 	cout << "Sequence: ";
-	vector.output_array();
-	return out << "Size: " << vector.get_size() << "\nCapacity: " << vector.get_capacity();
+	Vector.output_array();
+	return out << "Size: " << Vector.get_size() << "\nCapacity: " << Vector.get_capacity();
 }
 
 template<typename T>
-istream& operator >> (istream& in, vector<T>& vector)	// Перегрузка оператора >>
+istream& operator >> (istream& in, Vector<T>& Vector)	// Перегрузка оператора >>
 {
 	size_t size, capacity;
 	in >> size >> capacity;
-	vector.set_size(size);
-	vector.set_capacity(capacity);
-	for (size_t i = 0; i < vector.get_size(); ++i)
+	Vector.set_size(size);
+	Vector.set_capacity(capacity);
+	for (size_t i = 0; i < Vector.get_size(); ++i)
 	{
-		in >> vector[i];
+		in >> Vector[i];
 	}
 	return in;
 }
  
 template<typename T>
-vector<T>::~vector()	// Деструктор
+Vector<T>::~Vector()	// Деструктор
 {
 	delete[] this->seq;
 }
 
 template<typename T>
-void vector<T>::fill_random() // Заполнение вектора случайными значениями
+void Vector<T>::fill_random() // Заполнение вектора случайными значениями
 {
 	for (int i = 0; i < this->capacity; ++i)
 	{
@@ -196,7 +196,7 @@ void vector<T>::fill_random() // Заполнение вектора случайными значениями
 
 
 template<typename T>
-void vector<T>::set_capacity(size_t new_capacity) // Задание произвольной размерности вектора
+void Vector<T>::set_capacity(size_t new_capacity) // Задание произвольной размерности вектора
 {
 	T* new_seq = new T[new_capacity] {};
 	if (this->capacity > new_capacity)
@@ -224,7 +224,7 @@ void vector<T>::set_capacity(size_t new_capacity) // Задание произвольной размер
 }
 
 template<typename T>
-void vector<T>::set_size(size_t new_size) // Задание произвольного длины вектора
+void Vector<T>::set_size(size_t new_size) // Задание произвольного длины вектора
 {
 	if (new_size > this->capacity)
 	{

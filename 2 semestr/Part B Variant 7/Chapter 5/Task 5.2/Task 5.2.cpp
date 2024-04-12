@@ -2,7 +2,16 @@
 //  объявление и методы параметризированного класса vector из стандартной
 //  библиотеки шаблонов STL.
 
-#include "Task 5.2.h"
+#pragma once
+
+#include <iostream>
+#include <vector>
+
+#include "2.1.h"
+#include "2.2.1.h"
+#include "2.2.2.h"
+
+using namespace std;
 
 int main()
 {

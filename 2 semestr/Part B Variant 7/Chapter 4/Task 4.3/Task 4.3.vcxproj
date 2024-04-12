@@ -128,12 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="2.6.cpp" />
-    <ClCompile Include="list.cpp" />
+    <ClCompile Include="List.cpp" />
     <ClCompile Include="Task 4.3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2.6.h" />
-    <ClInclude Include="list.h" />
+    <ClInclude Include="List.h" />
     <ClInclude Include="Task 4.3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

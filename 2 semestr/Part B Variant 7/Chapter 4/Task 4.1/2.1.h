@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <math.h>
-#include "vector.h"
+#include "Vector.h"
 
 using namespace std;
 
