@@ -1,1 +1,4 @@
 4 Konstantin Edouardovich Tsiolkovskii 30 0 1 8.1
+10 Karnitskaya Evelina Alekseevna 42 0 1 9.7
+42 Karnitskaya Evelina Alekseevna 34 0 1 9.4
+47 Konstantin Edouardovich Tsiolkovskii 19 0 1 9.7

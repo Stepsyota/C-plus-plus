@@ -1,6 +1,6 @@
 #include "Student.h"
 
-void Student::fill_info(int counter = 0)
+void Student::fill_info(int size)
 {
 	grade = (rand() % 70 + 30) / 10.0;
 	course = rand() % 4 + 1;
@@ -16,12 +16,14 @@ void Student::fill_info(int counter = 0)
 	{
 		full_name[k] = all_names[index[start]];
 		k++;
+		if (k == 89)
+		{
+			break;
+		}
 	}
 	full_name[k] = '\0';
-
-	id = counter;
+	id = size;
 }
-
 void Student::output_info()
 {
 	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";

@@ -6,7 +6,11 @@
 
 //	Выполнить задания для бинарного файла. Размер файлов <= 64GiB.
 
-#include "Task 3.3.h"
+#include <iostream>
+#include <fstream>
+#include "Functions.h"
+#include "Student.h"
+
 using namespace std;
 
 int main()
@@ -26,7 +30,7 @@ int main()
 	make_data_base_with_needed_length(data_base_name, number);
 	read_file(data_base_name);
 
-	int needed_grade = 0;
+	/*int needed_grade = 0;
 	do
 	{
 		cout << "Enter the needed grade: ";
@@ -50,6 +54,6 @@ int main()
 	edit_student_by_ID(data_base_name);
 	read_file(data_base_name);
 	delete_student_by_ID(data_base_name);
-	read_file(data_base_name);
+	read_file(data_base_name);*/
 	return 0;
 }
