@@ -6,7 +6,6 @@
 
 using namespace std;
 
-
 void edit_student_by_ID(const char*);
 void delete_student_by_ID(const char*);
 void redefine_two_files(const char*, const char*);

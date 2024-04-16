@@ -42,7 +42,8 @@ void edit_student_by_ID(const char* file_main_name)
 			case 1:
 			{
 				cout << "Enter info: ";
-				cin.getline(student.full_name, 90);
+				cin.getline(student.full_name, 1, '\n');
+				cin.getline(student.full_name, 90, '\n');
 				break;
 			}
 			case 2:
@@ -157,7 +158,7 @@ void add_element_in_another_file(ofstream& file, Student& student)
 }
 void add_student_to_the_end(const char* file_name)
 {
-	fstream file(file_name, ios::app, ios::binary);
+	fstream file(file_name, ios::app | ios::binary);
 	if (!file.is_open())
 	{
 		file.close();
@@ -176,7 +177,7 @@ void add_student_to_the_end(const char* file_name)
 }
 void add_student_to_the_end(const char* file_name, Student& student)
 {
-	fstream file(file_name, ios::app, ios::binary);
+	fstream file(file_name, ios::app | ios::binary);
 	if (!file.is_open())
 	{
 		file.close();
