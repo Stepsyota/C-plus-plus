@@ -3,6 +3,9 @@
 //  2.7 «Учебной вычислительной практики».
 
 #include <iostream>
+#include "2.7.h"
+
+using namespace std;
 
 int main()
 {
