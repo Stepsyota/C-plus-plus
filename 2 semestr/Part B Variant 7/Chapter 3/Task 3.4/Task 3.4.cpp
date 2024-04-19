@@ -50,7 +50,7 @@ int main()
 
 	edit_student_by_ID(data_base_name);
 	read_file(data_base_name);
-	//delete_student_by_ID(data_base_name);
-	//read_file(data_base_name);
+	delete_student_by_ID(data_base_name);
+	read_file(data_base_name);
 	return 0;
 }
