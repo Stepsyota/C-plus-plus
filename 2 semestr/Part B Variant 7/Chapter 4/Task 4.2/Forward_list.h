@@ -43,6 +43,7 @@ public:
 
 	bool empty();
 	Node<T>* get_node(size_t);
+	void change_element_by_index(T, size_t);
 	void output_list();
 
 	void push_front(T);
@@ -227,6 +228,26 @@ Node<T>* Forward_list<T>::get_node(size_t index)
 		l = l->next;
 	}
 	return l;
+}
+
+template <typename T>
+void Forward_list<T>::change_element_by_index(T element, size_t index)
+{
+	if (index < size)
+	{
+		Node<T>* l = this->head;
+		for (size_t i = 0; i < index; ++i)
+		{
+			l = l->next;
+		}
+		l->data = element;
+	}
+	else
+	{
+		cout << "Error index\n";
+		return;
+	}
+	
 }
 
 template <typename T>

@@ -13,10 +13,18 @@ int main()
     make_task_2_4();
 
     // For check all constructors and methods
-    Forward_list<int> v1(10);
+    /*Forward_list<int> v1(10);
     v1.fill_list();
     cout << "v1:\t";    v1.output_list();
-    cout << "Size v1: " << v1.get_size() << endl;
+    v1.change_element_by_index(2000, 0);
+    cout << "v1:\t";    v1.output_list();
+    v1.change_element_by_index(999, 1);
+    cout << "v1:\t";    v1.output_list();
+    v1.change_element_by_index(300, 15);
+    cout << "v1:\t";    v1.output_list();
+    v1.change_element_by_index(500, 6);
+    cout << "v1:\t";    v1.output_list();*/
+    /*cout << "Size v1: " << v1.get_size() << endl;
     cout << "Empty v1: " << v1.empty() << endl;
     cout << "Third elem: " << v1.get_node(3) << '\t' << v1.get_node(3)->data << endl;
     cout << "Head: " << v1.get_head() << '\t' << v1.get_head()->data << endl;
@@ -49,5 +57,5 @@ int main()
     cout << "v5:\t";    v5.output_list();
     cout << "v2:\t";    v2.output_list();
 
-    v5.find_element(97);
+    v5.find_element(97);*/
 }

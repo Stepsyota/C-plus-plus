@@ -34,6 +34,14 @@ public:
 	void fill_random();
 	void set_capacity(size_t);
 	void set_size(size_t);
+
+	T get_element_by_index(size_t);
+	void change_element_by_index(T, size_t);
+	void increase_capacity();
+	bool empty() const;
+	void push_back(T);
+	void push_after(T, size_t);
+	void pop_back();
 };
 
 template<typename T>
@@ -67,7 +75,7 @@ void Vector<T>::output_array()	// Метод вывода элементов
 template<typename T>
 Vector<T>::Vector()	// Конструктор по умолчанию
 {
-	this->size = 1;
+	this->size = 0;
 	this->capacity = 1;
 	this->seq = new T[capacity]{};
 }
@@ -231,4 +239,99 @@ void Vector<T>::set_size(size_t new_size) // Задание произвольного длины вектора
 		set_capacity(new_size);
 	}
 	this->size = new_size;
+}
+
+template<typename T>
+T Vector<T>::get_element_by_index(size_t index)
+{
+	if (index >= size)
+	{
+		cout << "Error index\n";
+		return T(0);
+	}
+	else
+	{
+		return seq[index];
+	}
+}
+
+template<typename T>
+void Vector<T>::change_element_by_index(T element, size_t index)
+{
+	if (index >= size)
+	{
+		cout << "Error index\n";
+		return;
+	}
+	seq[index] = element;
+}
+
+template<typename T>
+bool Vector<T>::empty() const
+{
+	return size == 0;
+}
+
+template<typename T>
+void Vector<T>::push_back(T element)
+{
+	if (size == capacity)
+	{
+		increase_capacity();
+		seq[size] = element;
+		size++;
+	}
+	else
+	{
+		seq[size] = element;
+		size++;
+	}
+}
+
+template<typename T>
+void Vector<T>::increase_capacity()
+{
+	capacity = 2 * capacity;
+	T* new_seq = new T[capacity];
+	for (size_t i = 0; i < size; ++i)
+	{
+		new_seq[i] = seq[i];
+	}
+	delete[] seq;
+	seq = new_seq;
+}
+
+template<typename T>
+void Vector<T>::push_after(T element, size_t index)
+{
+	if (index > size)
+	{
+		cout << "Error index\n";
+		return;
+	}
+	else if (index == size)
+	{
+		push_back(element);
+		return;
+	}
+	if (size == capacity)
+	{
+		increase_capacity();
+	}
+	for (size_t i = size + 1; i >  index; --i)
+	{
+		seq[i] = seq[i - 1];
+	}
+	seq[index] = element; 
+	size++;
+}
+
+template<typename T>
+void Vector<T>::pop_back()
+{
+	if (!empty())
+	{
+		seq[size] = 0;
+		size--;
+	}
 }
