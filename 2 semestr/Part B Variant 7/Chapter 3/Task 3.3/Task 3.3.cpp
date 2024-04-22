@@ -30,25 +30,25 @@ int main()
 	make_data_base_with_needed_length(data_base_name, number);
 	read_file(data_base_name);
 
-	//int needed_grade = 0;
-	//do
-	//{
-	//	cout << "Enter the needed grade: ";
-	//	cin >> needed_grade;
-	//} while (needed_grade < 1);
+	int needed_grade = 0;
+	do
+	{
+		cout << "Enter the needed grade: ";
+		cin >> needed_grade;
+	} while (needed_grade < 1);
 
-	//int needed_course = 0;
-	//do
-	//{
-	//	cout << "Enter the needed course: ";
-	//	cin >> needed_course;
-	//} while (needed_course < 1 || needed_course > 4);
+	int needed_course = 0;
+	do
+	{
+		cout << "Enter the needed course: ";
+		cin >> needed_course;
+	} while (needed_course < 1 || needed_course > 4);
 
 
-	//make_file_with_needed_students(data_base_name, result_data_name, needed_grade, needed_course);
-	//cout << "===========================================================\n";
-	//cout << "Result data base of students: \n";
-	//read_file(result_data_name);
+	make_file_with_needed_students(data_base_name, result_data_name, needed_grade, needed_course);
+	cout << "===========================================================\n";
+	cout << "Result data base of students: \n";
+	read_file(result_data_name);
 
 
 	edit_student_by_ID(data_base_name);

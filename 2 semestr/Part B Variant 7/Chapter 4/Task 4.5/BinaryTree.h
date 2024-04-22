@@ -5,7 +5,8 @@
 using namespace std;
 
 template <typename T>
-class TreeNode {
+class TreeNode 
+{
 public:
     T data;
     TreeNode* left;
@@ -23,7 +24,8 @@ TreeNode<T>::TreeNode(T data, TreeNode<T>* left, TreeNode<T>* right)
 }
 
 template <typename T>
-class BinaryTree {
+class BinaryTree 
+{
 private:
     TreeNode<T>* root;
 public:
@@ -35,16 +37,18 @@ public:
     void operator = (BinaryTree<T>&&);
     ~BinaryTree();
 
+    void pop_elements(TreeNode<T>*);
+    TreeNode<T>* get_root() const;
     bool empty() const;
     void insert_element(T);
     void insert_element_recursion(TreeNode<T>*, TreeNode<T>*);
-    void output_elements_infix(TreeNode<T>*) const;
+    void output_elements_infix() const;
     void output_elements_infix_recursion(TreeNode<T>*) const;
-    void output_elements_prefix(TreeNode<T>*) const;
+    void output_elements_prefix() const;
     void output_elements_prefix_recursion(TreeNode<T>*) const;
-    void output_elements_postfix(TreeNode<T>*) const;
+    void output_elements_postfix() const;
     void output_elements_postfix_recursion(TreeNode<T>*) const;
-    void search_element(TreeNode<T>*, T);
+    void search_element(T);
     void search_recursion(TreeNode<T>*, T, int);
     int find_number_of_tops_on_level(TreeNode<T>*, int);
     int find_heigh(TreeNode<T>*);
@@ -59,7 +63,11 @@ BinaryTree<T>::BinaryTree()
 template <typename T>   // Конструктор с параметром
 BinaryTree<T>::BinaryTree(int size)
 {
-    
+    root = nullptr;
+    for (int i = 0; i < size; ++i)
+    {
+        insert_element(T(rand() % 30));
+    }
 }
 
 template <typename T>   // Конструктор копирования
@@ -89,13 +97,29 @@ void BinaryTree<T>::operator = (BinaryTree<T>&& other)
 template <typename T>   // Деструктор
 BinaryTree<T>::~BinaryTree()
 {
-    while (!empty())
+    pop_elements(root);
+}
+
+template <typename T>
+void BinaryTree<T>::pop_elements(TreeNode<T>* top)
+{
+    if (top)
     {
-        //
+        pop_element(top->left);
+        pop_element(top->right);
+
+        top->data = 0;
+        top->left = nullptr;
+        top->right = nullptr;
+
     }
 }
 
-
+template <typename T>
+TreeNode<T>* BinaryTree<T>::get_root() const
+{
+    return root;
+}
 
 template <typename T>
 bool BinaryTree<T>::empty() const
@@ -108,10 +132,10 @@ void BinaryTree<T>::insert_element(T value)
 {
     if (root == nullptr)
     {
-        root = new TreeNode(value);
+        root = new TreeNode<T>(value, nullptr, nullptr);
         return;
     }
-    TreeNode* new_node = new TreeNode(value);
+    TreeNode<T>* new_node = new TreeNode<T>(value, nullptr, nullptr);
     insert_element_recursion(root, new_node);
 }
 
@@ -148,10 +172,10 @@ void BinaryTree<T>::insert_element_recursion(TreeNode<T>* current_node, TreeNode
 }
 
 template <typename T>
-void BinaryTree<T>::output_elements_infix(TreeNode<T>* top) const
+void BinaryTree<T>::output_elements_infix() const
 {
     cout << "Infix:\t\t";
-    output_elements_infix_recursion(top);
+    output_elements_infix_recursion(root);
     cout << endl;
 }
 
@@ -167,10 +191,10 @@ void BinaryTree<T>::output_elements_infix_recursion(TreeNode<T>* top) const
 }
 
 template <typename T>
-void BinaryTree<T>::output_elements_prefix(TreeNode<T>* top) const
+void BinaryTree<T>::output_elements_prefix() const
 {
     cout << "Prefix:\t\t";
-    output_elements_prefix_recursion(top);
+    output_elements_prefix_recursion(root);
     cout << endl;
 }
 
@@ -186,10 +210,10 @@ void BinaryTree<T>::output_elements_prefix_recursion(TreeNode<T>* top) const
 }
 
 template <typename T>
-void BinaryTree<T>::output_elements_postfix(TreeNode<T>* top) const
+void BinaryTree<T>::output_elements_postfix() const
 {
     cout << "Postfix:\t";
-    output_elements_postfix_recursion(top);
+    output_elements_postfix_recursion(root);
     cout << endl;
 }
 
@@ -205,10 +229,10 @@ void BinaryTree<T>::output_elements_postfix_recursion(TreeNode<T>* top) const
 }
 
 template <typename T>
-void BinaryTree<T>::search_element(TreeNode<T>* top, T value)
+void BinaryTree<T>::search_element(T value)
 {
     int counter = 0;
-    search_recursion(top, value, counter);
+    search_recursion(root, value, counter);
 }
 
 template <typename T>
