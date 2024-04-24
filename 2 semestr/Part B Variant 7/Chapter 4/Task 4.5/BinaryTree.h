@@ -37,27 +37,41 @@ public:
     void operator = (BinaryTree<T>&&);
     ~BinaryTree();
 
-    void pop_elements(TreeNode<T>*);
     TreeNode<T>* get_root() const;
     bool empty() const;
-    void insert_element(T);
-    void insert_element_recursion(TreeNode<T>*, TreeNode<T>*);
-    void output_elements_infix() const;
-    void output_elements_infix_recursion(TreeNode<T>*) const;
-    void output_elements_prefix() const;
-    void output_elements_prefix_recursion(TreeNode<T>*) const;
-    void output_elements_postfix() const;
-    void output_elements_postfix_recursion(TreeNode<T>*) const;
+    void copy_tree(TreeNode<T>*);
+
+    void pop_element(T);
+    TreeNode<T>* pop_node(TreeNode<T>*, T);
+    void pop_all_elements(TreeNode<T>*);
+
     void search_element(T);
-    void search_recursion(TreeNode<T>*, T, int);
+    TreeNode<T>* search_min_node(TreeNode<T>*);
+
     int find_number_of_tops_on_level(TreeNode<T>*, int);
     int find_heigh(TreeNode<T>*);
+
+    void insert_element(T);
+
+    void output_elements_infix() const;
+    void output_elements_prefix() const;
+    void output_elements_postfix() const;
+
+private:
+    void search_recursion(TreeNode<T>*, T, int);
+
+    void insert_element_recursion(TreeNode<T>*, TreeNode<T>*);
+
+    void output_elements_infix_recursion(TreeNode<T>*) const;
+    void output_elements_prefix_recursion(TreeNode<T>*) const;
+    void output_elements_postfix_recursion(TreeNode<T>*) const;
 };
 
 template <typename T> // Конструктор по умолчанию
 BinaryTree<T>::BinaryTree()
 {
     root = nullptr;
+
 }
 
 template <typename T>   // Конструктор с параметром
@@ -66,53 +80,42 @@ BinaryTree<T>::BinaryTree(int size)
     root = nullptr;
     for (int i = 0; i < size; ++i)
     {
-        insert_element(T(rand() % 30));
+        T element = T(rand() % 30);
+        cout << "Element " << i << " is " << element << endl;
+        insert_element(element);
     }
 }
 
 template <typename T>   // Конструктор копирования
 BinaryTree<T>::BinaryTree(const BinaryTree<T>& other)
 {
-    
+    copy_tree(other.get_root());
 }
 
 template<typename T>    // Перегрузка оператора = для копирования
 void BinaryTree<T>::operator = (const BinaryTree<T>& other)
 {
-    
+    copy_tree(other.get_root());
 }
 
 template <typename T>   // Конструктор перемещения
 BinaryTree<T>::BinaryTree(BinaryTree<T>&& other)
 {
-    
+    copy_tree(other.get_root());
+    pop_all_elements(other.get_root());
 }
 
 template<typename T>    // Перегрузка оператора = для перемещения
 void BinaryTree<T>::operator = (BinaryTree<T>&& other)
 {
-    
+    copy_tree(other.get_root());
+    pop_all_elements(other.get_root());
 }
 
 template <typename T>   // Деструктор
 BinaryTree<T>::~BinaryTree()
 {
-    pop_elements(root);
-}
-
-template <typename T>
-void BinaryTree<T>::pop_elements(TreeNode<T>* top)
-{
-    if (top)
-    {
-        pop_element(top->left);
-        pop_element(top->right);
-
-        top->data = 0;
-        top->left = nullptr;
-        top->right = nullptr;
-
-    }
+    pop_all_elements(root);
 }
 
 template <typename T>
@@ -128,9 +131,99 @@ bool BinaryTree<T>::empty() const
 }
 
 template <typename T>
+void BinaryTree<T>::copy_tree(TreeNode<T>* current_node)
+{
+    if (current_node)
+    {
+        insert_element(current_node->data);
+        copy_tree(current_node->left);
+        copy_tree(current_node->right);
+    }
+
+}
+
+template <typename T>
+void BinaryTree<T>::pop_element(T value)
+{
+    if (empty())
+    {
+        cout << "The tree is empty\n";
+        return;
+    }
+    pop_node(root, value);
+}
+
+template <typename T>
+TreeNode<T>* BinaryTree<T>::pop_node(TreeNode<T>* current_node, T value)
+{
+    if (current_node->data == value)
+    {
+        if (current_node->left == nullptr && current_node->right == nullptr)
+        {
+            return nullptr; 
+        }
+
+        if (current_node->left == nullptr)
+        {
+            return current_node->right;
+        }
+
+        if (current_node->right == nullptr)
+        {
+            return current_node->left;
+        }
+
+        TreeNode<T>* min_node = search_min_node(current_node->right);
+        current_node->data = min_node->data;
+        current_node->right = pop_node(current_node->right, min_node->data);
+        return current_node;
+    }
+
+    if (value < current_node->data)
+    {
+        if (current_node->left == nullptr)
+        {
+            cout << "Element is`not found\n";
+            return current_node;
+        }
+        current_node->left = pop_node(current_node->left, value);
+        return current_node;
+    }
+
+    if (value > current_node->data)
+    {
+        if (current_node->right == nullptr)
+        {
+            cout << "Element is`not found\n";
+            return current_node;
+        }
+        current_node->right = pop_node(current_node->right, value);
+        return current_node;
+    }
+}
+
+template <typename T>
+void BinaryTree<T>::pop_all_elements(TreeNode<T>* top)
+{
+    if (top)
+    {
+        pop_all_elements(top->left);
+        pop_all_elements(top->right);
+
+        top->data = 0;
+        top->left = nullptr;
+        top->right = nullptr;
+    }
+    if (top == root)
+    {
+        root = nullptr;
+    }
+}
+
+template <typename T>
 void BinaryTree<T>::insert_element(T value)
 {
-    if (root == nullptr)
+    if (empty())
     {
         root = new TreeNode<T>(value, nullptr, nullptr);
         return;
@@ -252,7 +345,7 @@ void BinaryTree<T>::search_recursion(TreeNode<T>* top, T value, int counter)
         }
         else
         {
-            cout << endl << "The element is located on " << counter << " level\n";
+            cout << endl << "The element " << value <<" is located on " << counter << " level\n";
         }
     }
     else
@@ -261,6 +354,15 @@ void BinaryTree<T>::search_recursion(TreeNode<T>* top, T value, int counter)
     }
 }
 
+template <typename T>
+TreeNode<T>* BinaryTree<T>::search_min_node(TreeNode<T>* current_node)
+{
+    if (current_node->left == nullptr)
+    {
+        return current_node;
+    }
+    search_min_node(current_node->left);
+}
 
 template <typename T>
 int BinaryTree<T>::find_number_of_tops_on_level(TreeNode<T>* top, int level_counter)
@@ -271,7 +373,6 @@ int BinaryTree<T>::find_number_of_tops_on_level(TreeNode<T>* top, int level_coun
         return 1;
     return find_number_of_tops_on_level(top->left, level_counter - 1) + find_number_of_tops_on_level(top->right, level_counter - 1);
 }
-
 
 template <typename T>
 int BinaryTree<T>::find_heigh(TreeNode<T>* root)
