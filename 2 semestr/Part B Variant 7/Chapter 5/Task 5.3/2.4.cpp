@@ -65,7 +65,6 @@ void delete_similar_element(forward_list<char>& list)
 			}
 			current_2_prev = current_2;
 			current_2 = next(current_2);
-			//output_list(list);
 		}
 		current_1_prev = current_1;
 		current_1 = next(current_1);
@@ -92,7 +91,6 @@ void delete_all_similar_elements(forward_list<char>& list)
 			}
 			current_2_prev = current_2;
 			current_2 = next(current_2);
-			//output_list(list);
 		}
 		if (delete_element)
 		{
