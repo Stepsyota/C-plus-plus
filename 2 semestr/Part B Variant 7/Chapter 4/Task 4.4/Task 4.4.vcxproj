@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cyrillic.cpp" />
     <ClCompile Include="Task 4.4.cpp" />
   </ItemGroup>
   <ItemGroup>
