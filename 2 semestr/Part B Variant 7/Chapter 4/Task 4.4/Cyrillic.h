@@ -13,6 +13,10 @@ private:
 public:
 	CyrillicSet();
 	CyrillicSet(int);
+	CyrillicSet(const CyrillicSet&);
+	void operator =(const CyrillicSet&);
+	CyrillicSet(CyrillicSet&&);
+	void operator =(CyrillicSet&&);
 	~CyrillicSet();
 
 	bool empty();
@@ -20,7 +24,14 @@ public:
 	void output_set();
 	void increase_capacity();
 
+	int get_size() const;
+	int get_capacity() const;
+	char get_data(int) const;
+	void set_size(int);
+
 	void push_front(char);
 	void push_back(char);
-	void push_after(int, char);
+	void push_on_index(int, char);
+
+	void pop_all_elements();
 };
