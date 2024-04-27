@@ -52,5 +52,8 @@ int main()
 
 		cout << "Alphabet2: ";
 		Alphabet2.output_set();
+
+		CyrillicSet Alphabet7();
+		Alphabet7 = Alphabet1 || Alphabet2;
 		//
 }

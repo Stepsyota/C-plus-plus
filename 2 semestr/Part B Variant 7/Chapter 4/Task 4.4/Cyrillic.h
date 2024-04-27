@@ -19,6 +19,9 @@ public:
 	void operator =(CyrillicSet&&);
 	~CyrillicSet();
 
+	CyrillicSet& operator &&(const CyrillicSet& other); // Пересечение
+	CyrillicSet& operator ||(const CyrillicSet& other);	// Объединение
+
 	bool empty();
 	void insert_element(char);
 	void output_set();

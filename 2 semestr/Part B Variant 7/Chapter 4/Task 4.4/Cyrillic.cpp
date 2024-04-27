@@ -84,6 +84,25 @@ CyrillicSet::~CyrillicSet()
 }
 //
 
+CyrillicSet& CyrillicSet::operator &&(const CyrillicSet&)
+{
+
+}
+
+CyrillicSet& CyrillicSet::operator ||(const CyrillicSet& other)
+{
+	for (int i = 0; i < other.get_size(); ++i)
+	{
+		if (size == 64)
+		{
+			cout << "The first set is full\n";
+			return *this;
+		}
+		insert_element(other.get_data(i));
+	}
+	return *this;
+}
+
 bool CyrillicSet::empty()
 {
 	return size == 0;
@@ -142,10 +161,12 @@ int CyrillicSet::get_size() const
 {
 	return this->size;
 }
+
 int CyrillicSet::get_capacity() const
 {
 	return this->capacity;
 }
+
 char CyrillicSet::get_data(int index) const
 {
 	return this->seq[index];
