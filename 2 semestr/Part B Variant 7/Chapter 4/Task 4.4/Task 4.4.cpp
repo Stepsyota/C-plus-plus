@@ -21,6 +21,8 @@ int main()
 
 	// For check all methods and constructors
 		//With parametr, copy, move and operators
+		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+		cout << "Конструкторы\n";
 		CyrillicSet Alphabet1(size);
 		cout << "Alphabet1: ";
 		Alphabet1.output_set();
@@ -52,8 +54,45 @@ int main()
 
 		cout << "Alphabet2: ";
 		Alphabet2.output_set();
+		//	Объединение, пересечение, разность
+		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+		cout << "Операции с множествами\n";
+		CyrillicSet Alphabet7(size);
+		cout << "Alphabet7: ";
+		Alphabet7.output_set();
 
-		CyrillicSet Alphabet7();
-		Alphabet7 = Alphabet1 || Alphabet2;
+		CyrillicSet Alphabet8(size);
+		cout << "Alphabet8: ";
+		Alphabet8.output_set();
+
+		CyrillicSet Alphabet9 =  Alphabet7 || Alphabet8;
+		cout << "Alphabet9: ";
+		Alphabet9.output_set();
+
+		CyrillicSet Alphabet10 = Alphabet7 && Alphabet8;
+		cout << "Alphabet10: ";
+		Alphabet10.output_set();
+
+		CyrillicSet Alphabet11 = Alphabet7 / Alphabet8;
+		cout << "Alphabet11: ";
+		Alphabet11.output_set();
+
+		CyrillicSet Alphabet12 = Alphabet8 / Alphabet7;
+		cout << "Alphabet12: ";
+		Alphabet12.output_set();
+
+		// Операторы ввода - вывода
+		CyrillicSet Alphabet13(size);
+		cout << "Alphabet13: ";
+		Alphabet13.output_set();
+		cout << "Alphabet13: ";
+		cout << Alphabet13;
+
+		CyrillicSet Alphabet14(1);
+		cout << "Alphabet14: ";
+		cin >> Alphabet14;
+		Alphabet14.output_set();
+		cout << "Alphabet14: ";
+		cout << Alphabet14;
 		//
 }

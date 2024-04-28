@@ -15,7 +15,7 @@ CyrillicSet::CyrillicSet(int size)
 {
 	if (size > 64)
 	{
-		cout << "The maximum of this set is 64. Your size will be forced to 64.\n";
+		cout << "The maximum size of this set is 64. Your size will be forced to 64.\n";
 		size = 64;
 	}
 	this->size = 0;
@@ -84,23 +84,50 @@ CyrillicSet::~CyrillicSet()
 }
 //
 
-CyrillicSet& CyrillicSet::operator &&(const CyrillicSet&)
+CyrillicSet& CyrillicSet::operator &&(const CyrillicSet& other) const
 {
-
+	if (get_size() == 64 && other.get_size() == 64)
+	{
+		CyrillicSet* TEMP = new CyrillicSet(*this);
+		return *TEMP;
+	}
+	CyrillicSet* TEMP = new CyrillicSet();
+	for (int i = 0; i < get_size(); ++i)
+	{
+		for (int j = 0; j < other.get_size(); ++j)
+		{
+			if (get_data(i) == other.get_data(j))
+			{
+				TEMP->insert_element(get_data(i));
+			}
+		}
+	}
+	return *TEMP;
 }
 
-CyrillicSet& CyrillicSet::operator ||(const CyrillicSet& other)
+CyrillicSet& CyrillicSet::operator ||(const CyrillicSet& other) const
 {
+	CyrillicSet* TEMP = new CyrillicSet(*this);
 	for (int i = 0; i < other.get_size(); ++i)
 	{
-		if (size == 64)
+		if (TEMP->get_size() == 64)
 		{
 			cout << "The first set is full\n";
-			return *this;
+			return *TEMP;
 		}
-		insert_element(other.get_data(i));
+		TEMP->insert_element(other.get_data(i));
 	}
-	return *this;
+	return *TEMP;
+}
+
+CyrillicSet& CyrillicSet::operator /(const CyrillicSet& other) const
+{
+	CyrillicSet* TEMP = new CyrillicSet(*this);
+	for (int i = 0; i < other.get_size(); ++i)
+	{
+		TEMP->pop_element(other.get_data(i));
+	}
+	return *TEMP;
 }
 
 bool CyrillicSet::empty()
@@ -172,20 +199,16 @@ char CyrillicSet::get_data(int index) const
 	return this->seq[index];
 }
 
-void CyrillicSet::set_size(int size)
+void CyrillicSet::set_capacity(int capacity)
 {
-	if (size < 0 || size > 64)
+	this->capacity = capacity;
+	char* new_seq = new char[this->capacity] {};
+	for (int i = 0; i < this->size; ++i)
 	{
-		return;
+		new_seq[i] = seq[i];
 	}
-	if (size < this->size)
-	{
-
-	}
-	if (size > this->size)
-	{
-
-	}
+	delete[] seq;
+	seq = new_seq;
 }
 
 void CyrillicSet::push_front(char element)
@@ -212,10 +235,72 @@ void CyrillicSet::push_back(char element)
 	push_on_index(size, element);
 }
 
+void CyrillicSet::pop_element(int index)
+{
+	bool pop_element = 0;
+	for (int i = 0; i < size; ++i)
+	{
+		if (i == index)
+		{
+			pop_element = 1;
+			size--;
+		}
+		if (pop_element)
+		{
+			seq[i] = seq[i + 1];
+		}
+	}
+}
+
+void CyrillicSet::pop_element(char element)
+{
+	bool pop_element = 0;
+	for (int i = 0; i < size; ++i)
+	{
+		if (seq[i] == element)
+		{
+			pop_element = 1;
+			size--;
+		}
+		if (pop_element)
+		{
+			seq[i] = seq[i + 1];
+		}
+	}
+}
+
 void CyrillicSet::pop_all_elements()
 {
 	this->size = 0;
 	this->capacity = 1;
 	delete[] seq;
 	seq = new char[capacity] {};
+}
+
+ostream& operator << (ostream& out, CyrillicSet& Set)
+{
+	cout << "Set: ";
+	Set.output_set();
+	return out << "Size: " << Set.get_size() << "\nCapacity: " << Set.get_capacity() << endl;
+}
+
+istream& operator >> (istream& in, CyrillicSet& Set)
+{
+	int size, capacity;
+	do
+	{
+		in >> size >> capacity;
+		if (size > capacity)
+		{
+			cout << "Error size or capacity\n";
+		}
+	} while (size > capacity);
+	Set.set_capacity(capacity);
+	for (size_t i = 0; i < size; ++i)
+	{
+		char data;
+		in >> data;
+		Set.insert_element(data);
+	}
+	return in;
 }
