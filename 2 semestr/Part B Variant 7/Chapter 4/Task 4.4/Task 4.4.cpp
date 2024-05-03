@@ -88,11 +88,31 @@ int main()
 		cout << "Alphabet13: ";
 		cout << Alphabet13;
 
-		CyrillicSet Alphabet14(1);
+		CyrillicSet Alphabet14(0);
 		cout << "Alphabet14: ";
 		cin >> Alphabet14;
 		Alphabet14.output_set();
 		cout << "Alphabet14: ";
 		cout << Alphabet14;
+		//Другие операторы
+		CyrillicSet Alphabet15(size);
+		cout << "Alphabet15: ";
+		Alphabet15.output_set();
+		Alphabet15 += 'f';
+		Alphabet15 += 'А';
+		Alphabet15 += 'У';
+		Alphabet15 += 'ъ';
+		cout << "Alphabet15: ";
+		Alphabet15.output_set();
+
+		CyrillicSet Alphabet16(size);
+		cout << "Alphabet16: ";
+		Alphabet16.output_set();
+		Alphabet16 -= 'Н';
+		Alphabet16 -= 'ы';
+		Alphabet16 -= 'I';
+		cout << "Alphabet16: ";
+		Alphabet16.output_set();
 		//
+		return 0;
 }

@@ -167,19 +167,23 @@ ostream& operator << (ostream& out, Vector<T>& Vector)	// Перегрузка оператора <
 {
 	cout << "Sequence: ";
 	Vector.output_array();
-	return out << "Size: " << Vector.get_size() << "\nCapacity: " << Vector.get_capacity();
+	return out << "Size: " << Vector.get_size() << "\nCapacity: " << Vector.get_capacity() << endl;
 }
 
 template<typename T>
 istream& operator >> (istream& in, Vector<T>& Vector)	// Перегрузка оператора >>
 {
 	size_t size, capacity;
-	in >> size >> capacity;
-	Vector.set_size(size);
-	Vector.set_capacity(capacity);
-	for (size_t i = 0; i < Vector.get_size(); ++i)
+	do
 	{
-		in >> Vector[i];
+		in >> size >> capacity;
+	} while (size > capacity);
+	Vector.set_capacity(capacity);
+	for (size_t i = 0; i < size; ++i)
+	{
+		T element;
+		in >> element;
+		Vector.push_back(element);
 	}
 	return in;
 }
@@ -205,27 +209,30 @@ template<typename T>
 void Vector<T>::set_capacity(size_t new_capacity) // Задание произвольной размерности вектора
 {
 	T* new_seq = new T[new_capacity] {};
+	if (this->size > new_capacity)
+	{
+		this->size = new_capacity;
+	}
 	if (this->capacity > new_capacity)
 	{
-		for (size_t i = 0; i < new_capacity; ++i)
+		for (size_t i = 0; i < size; ++i)
 		{
 			new_seq[i] = this->seq[i];
 		}
 	}
 	else
 	{
-		for (size_t i = 0; i < this->capacity; ++i)
+		for (size_t i = 0; i < size; ++i)
 		{
 			new_seq[i] = this->seq[i];
 		}
 	}
 
-	if (this->size > new_capacity)
+	if (this->capacity != 0)
 	{
-		this->size = new_capacity;
+		delete[] this->seq;
 	}
 	this->capacity = new_capacity;
-	delete[] this->seq;
 	this->seq = new_seq;
 }
 

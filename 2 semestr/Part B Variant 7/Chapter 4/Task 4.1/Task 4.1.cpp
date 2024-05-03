@@ -14,9 +14,10 @@ int main()
     //make_task_2_1();
 
     // For check all methods and operators
-    Vector<int> v0(1);
+    Vector<int> v0(0);
     cout << "Enter the size and the capacity and all elements of the sequence:\n";
     cin >> v0;
+    cout << v0;
     Vector<int> v01;
     cout << v01 << '\n';
     cout << v01.empty() << endl;

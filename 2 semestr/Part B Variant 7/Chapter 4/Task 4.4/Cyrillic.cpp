@@ -3,7 +3,6 @@
 
 using namespace std;
 
-//
 CyrillicSet::CyrillicSet()
 {
 	this->size = 0;
@@ -82,7 +81,6 @@ CyrillicSet::~CyrillicSet()
 {
 	delete[] seq;
 }
-//
 
 CyrillicSet& CyrillicSet::operator &&(const CyrillicSet& other) const
 {
@@ -130,6 +128,16 @@ CyrillicSet& CyrillicSet::operator /(const CyrillicSet& other) const
 	return *TEMP;
 }
 
+void CyrillicSet::operator +=(char element)
+{
+	insert_element(element);
+}
+
+void CyrillicSet::operator -=(char element)
+{
+	pop_element(element);
+}
+
 bool CyrillicSet::empty()
 {
 	return size == 0;
@@ -137,6 +145,10 @@ bool CyrillicSet::empty()
 
 void CyrillicSet::insert_element(char element)
 {
+	if (!check_element(element))
+	{
+		return;
+	}
 	if (empty())
 	{
 		seq[0] = element;
@@ -211,6 +223,52 @@ void CyrillicSet::set_capacity(int capacity)
 	seq = new_seq;
 }
 
+void CyrillicSet::pop_element(int index)
+{
+	bool pop_element = 0;
+	for (int i = 0; i < size; ++i)
+	{
+		if (i == index)
+		{
+			pop_element = 1;
+			size--;
+		}
+		if (pop_element)
+		{
+			seq[i] = seq[i + 1];
+		}
+	}
+}
+
+void CyrillicSet::pop_element(char element)
+{
+	if (!check_element(element))
+	{
+		return;
+	}
+	bool pop_element = 0;
+	for (int i = 0; i < size; ++i)
+	{
+		if (seq[i] == element)
+		{
+			pop_element = 1;
+			size--;
+		}
+		if (pop_element)
+		{
+			seq[i] = seq[i + 1];
+		}
+	}
+}
+
+void CyrillicSet::pop_all_elements()
+{
+	this->size = 0;
+	this->capacity = 1;
+	delete[] seq;
+	seq = new char[capacity] {};
+}
+
 void CyrillicSet::push_front(char element)
 {
 	push_on_index(0, element);
@@ -235,46 +293,14 @@ void CyrillicSet::push_back(char element)
 	push_on_index(size, element);
 }
 
-void CyrillicSet::pop_element(int index)
+bool CyrillicSet::check_element(char element)
 {
-	bool pop_element = 0;
-	for (int i = 0; i < size; ++i)
+	if (element < -64 || element > -1)
 	{
-		if (i == index)
-		{
-			pop_element = 1;
-			size--;
-		}
-		if (pop_element)
-		{
-			seq[i] = seq[i + 1];
-		}
+		cout << "Invalid element: " << element << endl;
+		return 0;
 	}
-}
-
-void CyrillicSet::pop_element(char element)
-{
-	bool pop_element = 0;
-	for (int i = 0; i < size; ++i)
-	{
-		if (seq[i] == element)
-		{
-			pop_element = 1;
-			size--;
-		}
-		if (pop_element)
-		{
-			seq[i] = seq[i + 1];
-		}
-	}
-}
-
-void CyrillicSet::pop_all_elements()
-{
-	this->size = 0;
-	this->capacity = 1;
-	delete[] seq;
-	seq = new char[capacity] {};
+	return 1;
 }
 
 ostream& operator << (ostream& out, CyrillicSet& Set)
@@ -286,6 +312,7 @@ ostream& operator << (ostream& out, CyrillicSet& Set)
 
 istream& operator >> (istream& in, CyrillicSet& Set)
 {
+	Set.pop_all_elements();
 	int size, capacity;
 	do
 	{
@@ -296,7 +323,7 @@ istream& operator >> (istream& in, CyrillicSet& Set)
 		}
 	} while (size > capacity);
 	Set.set_capacity(capacity);
-	for (size_t i = 0; i < size; ++i)
+	for (size_t i = 0; i < size ; ++i)
 	{
 		char data;
 		in >> data;

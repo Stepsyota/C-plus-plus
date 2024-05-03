@@ -22,6 +22,8 @@ public:
 	CyrillicSet& operator &&(const CyrillicSet& other) const;	// Пересечение
 	CyrillicSet& operator ||(const CyrillicSet& other) const;	// Объединение
 	CyrillicSet& operator /(const CyrillicSet& other) const;	// Разность
+	void operator +=(char);	//	Добавление элемента
+	void operator -=(char);	//	Удаление элемента
 
 	bool empty();
 	void insert_element(char);
@@ -35,13 +37,16 @@ public:
 	void set_capacity(int);
 	void set_data(int, char);
 
-	void push_front(char);
-	void push_back(char);
-	void push_on_index(int, char);
-
 	void pop_element(int);
 	void pop_element(char);
 	void pop_all_elements();
+
+private:
+	bool check_element(char);
+
+	void push_front(char);
+	void push_back(char);
+	void push_on_index(int, char);
 };
 
 ostream& operator << (ostream&, CyrillicSet&);
