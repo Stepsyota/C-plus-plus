@@ -27,38 +27,40 @@ using namespace std;
 //Х что изображено (строка)
 //Х врем€ создани€ (год)
 
-
-class Coins
+class Instance
 {
 protected:
-	char* designation;
-private:
-	double denomination;
-	unsigned int start_of_use;
-	unsigned int end_of_use;
+	char* name;
+	int year_start;
+	int year_end;
 };
 
-class Edged_Weapon : public Coins
-{
-private:
-	unsigned int start_dating;
-	unsigned int end_dating;
-};
-
-class Photos
+class ArtObject
 {
 protected:
-	char* what_is_pictured;
-	unsigned int creation_time;
+	char* what_is_puctured;
+	int year_of_creation;
 };
 
-class Paintings : public Photos
+class Coins : public Instance
 {
-protected:
+	double value;
+};
+
+class Edged_Weapon : public Instance
+{
+};
+
+class Photos : public ArtObject
+{
+};
+
+class Paintings : public ArtObject
+{
 	char* author;
 };
 
-class Statuettes : public Paintings
+class Statuettes : public ArtObject
 {
-
+	char* author;
 };
