@@ -12,29 +12,29 @@ class ArtObject
 	char* place_of_creation;
 	char* designation;
 public:
-	void set_author(char*);
+	ArtObject();
+	ArtObject(char[], int, char[], char[]);
+	ArtObject(const ArtObject&);
+	ArtObject(ArtObject&&);
+	virtual ~ArtObject();
+
+	void operator =(const ArtObject&);
+	void operator =(ArtObject&&);
+	void set_author(char[]);
 	void set_time_of_creation(int);
-	void set_place_of_creation(char*);
-	void set_designation(char*);
+	void set_place_of_creation(char[]);
+	void set_designation(char[]);
 
 	char* get_author() const;
 	int get_time_of_creation() const;
 	char* get_place_of_creation() const;
 	char* get_designation() const;
 
-	void output_author() const;
-	void output_time_of_creation() const;
-	void output_place_of_creation() const;
-	void output_designation() const;
-
-	ArtObject();
-	ArtObject(char*, int, char*, char*);
-	ArtObject(const ArtObject&);
-	ArtObject(ArtObject&&);
-	~ArtObject();
+	virtual void pop_object();
+	virtual void Print();
 };
 /************************************************/
-class AplliedArtObject : public ArtObject
+class AplliedArtObject : virtual public ArtObject
 {
 	char* material;
 	int number_of_copies;
@@ -42,38 +42,45 @@ class AplliedArtObject : public ArtObject
 	int year_of_end_of_use;
 
 public:
+	AplliedArtObject();
+	AplliedArtObject(char[], int, char[], char[],char[], int, int, int);
+	AplliedArtObject(const AplliedArtObject&);
+	AplliedArtObject(AplliedArtObject&&);
+	virtual ~AplliedArtObject();
+
 	void set_material(char*);
 	void set_number_of_copies(int);
 	void set_year_of_start_of_use(int);
 	void set_year_of_end_of_use(int);
 
-	char* get_material();
-	int  get_number_of_copies();
-	int get_year_of_start_of_use();
-	int get_year_of_end_of_use();
+	char* get_material() const;
+	int  get_number_of_copies() const;
+	int get_year_of_start_of_use() const;
+	int get_year_of_end_of_use() const;
 
-	void output_material();
-	void output_number_of_copies();
-	void output_year_of_start_of_use();
-	void output_year_of_end_of_use();
+	virtual void pop_object() override;
+	virtual void Print() override;
 };
 
-class Coin : public AplliedArtObject
+class Coin : virtual public AplliedArtObject
 {
 	char* what_is_depicted;
 	double value;
 
 public:
+	Coin();
+	Coin(char[], int, char[], char[],char[], int, int, int,char[], double);
+	Coin(const Coin&);
+	Coin(Coin&&);
+	~Coin();
 	void set_what_is_depicted(char*);
 	void set_value(double);
 
-	char* get_what_is_depicted();
-	double get_value();
+	char* get_what_is_depicted() const;
+	double get_value() const;
 
-	void output_what_is_depicted();
-	void output_value();
-
-	Coin();
+	void pop_object() override;
+	void Print() override;
 };
 
 class EdgedWeapon : public AplliedArtObject
