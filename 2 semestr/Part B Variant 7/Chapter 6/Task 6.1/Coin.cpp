@@ -83,6 +83,7 @@ void Coin::pop_object()
 	this->value = 0;
 }
 void Coin::Print() const
+
 {
 	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	cout << "Category: Coin\n";
