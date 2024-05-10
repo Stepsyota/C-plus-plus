@@ -72,7 +72,7 @@ void Photo::pop_object()
 	this->photo_format = new char[2] {"-"};
 	this->color_photo = 0;
 }
-void Photo::Print()
+void Photo::Print() const
 {
 	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	cout << "Category: Photo\n";

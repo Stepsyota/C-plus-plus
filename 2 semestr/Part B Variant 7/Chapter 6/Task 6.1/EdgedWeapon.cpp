@@ -78,7 +78,7 @@ void EdgedWeapon::pop_object()
 	this->type = new char[2] {"-"};
 	this->degree_of_sharpening = 0;
 }
-void EdgedWeapon::Print()
+void EdgedWeapon::Print() const
 {
 	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	cout << "Category: EdgedWeapon\n";

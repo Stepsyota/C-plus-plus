@@ -1,7 +1,7 @@
 #pragma once
 #include "AplliedArtObject.h"
 
-class EdgedWeapon : public AplliedArtObject
+class EdgedWeapon : virtual public AplliedArtObject
 {
 	char* type;
 	double degree_of_sharpening;
@@ -20,5 +20,5 @@ public:
 	double get_degree_of_sharpening() const;
 
 	void pop_object() override;
-	void Print() override;
+	void Print() const override;
 };

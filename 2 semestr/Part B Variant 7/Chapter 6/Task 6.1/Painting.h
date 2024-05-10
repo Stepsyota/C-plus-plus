@@ -1,7 +1,7 @@
 #pragma once
 #include "VisualArtObject.h"
 
-class Painting : public VisualArtObject
+class Painting : virtual public VisualArtObject
 {
 	char* type_of_paint;
 	char* dimensions;
@@ -20,5 +20,5 @@ public:
 	char* get_dimensions() const;
 
 	void pop_object() override;
-	void Print() override;
+	void Print() const override;
 };

@@ -24,5 +24,5 @@ public:
 	char* get_designation() const;
 
 	virtual void pop_object();
-	virtual void Print();
+	virtual void Print() const;
 };

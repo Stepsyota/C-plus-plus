@@ -72,7 +72,7 @@ void VisualArtObject::pop_object()
 	delete[] this->what_is_depicted;
 	this->what_is_depicted = new char[2] {"-"};
 }
-void VisualArtObject::Print()
+void VisualArtObject::Print() const
 {
 	ArtObject::Print();
 	cout << "Genre:\t\t\t" << this->genre << endl;

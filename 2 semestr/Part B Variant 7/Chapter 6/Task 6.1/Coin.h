@@ -20,5 +20,5 @@ public:
 	double get_value() const;
 
 	void pop_object() override;
-	void Print() override;
+	void Print() const override;
 };

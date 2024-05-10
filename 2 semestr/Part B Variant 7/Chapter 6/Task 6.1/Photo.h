@@ -1,7 +1,7 @@
 #pragma once
 #include "VisualArtObject.h"
 
-class Photo : public VisualArtObject
+class Photo : virtual public VisualArtObject
 {
 	char* photo_format;
 	bool color_photo;
@@ -20,5 +20,5 @@ public:
 	bool get_color_photo() const;
 
 	void pop_object() override;
-	void Print() override;
+	void Print() const override;
 };

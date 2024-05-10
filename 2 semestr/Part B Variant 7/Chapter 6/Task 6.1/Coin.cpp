@@ -82,7 +82,7 @@ void Coin::pop_object()
 	this->what_is_depicted = new char[2] {"-"};
 	this->value = 0;
 }
-void Coin::Print()
+void Coin::Print() const
 {
 	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	cout << "Category: Coin\n";
