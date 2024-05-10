@@ -127,13 +127,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Classes.cpp" />
+    <ClCompile Include="AplliedArtObject.cpp" />
+    <ClCompile Include="ArtObject.cpp" />
+    <ClCompile Include="Coin.cpp" />
+    <ClCompile Include="EdgedWeapon.cpp" />
+    <ClCompile Include="Painting.cpp" />
+    <ClCompile Include="Photo.cpp" />
+    <ClCompile Include="Sculpture.cpp" />
     <ClCompile Include="Task 6.1.cpp" />
+    <ClCompile Include="VisualArtObject.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Classes.h" />
+    <ClInclude Include="AplliedArtObject.h" />
+    <ClInclude Include="ArtObject.h" />
+    <ClInclude Include="Coin.h" />
+    <ClInclude Include="EdgedWeapon.h" />
+    <ClInclude Include="Painting.h" />
+    <ClInclude Include="Photo.h" />
+    <ClInclude Include="Sculpture.h" />
     <ClInclude Include="Some Constants.h" />
     <ClInclude Include="Task 6.1.h" />
+    <ClInclude Include="VisualArtObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
