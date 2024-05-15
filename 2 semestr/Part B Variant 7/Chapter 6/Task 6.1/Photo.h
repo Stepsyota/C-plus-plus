@@ -21,4 +21,11 @@ public:
 
 	void pop_object() override;
 	void Print() const override;
+
+
+	friend std::ostream& operator<<(std::ostream& out, const Photo& obj)
+	{
+		obj.Print();
+		return out;
+	}
 };

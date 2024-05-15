@@ -1,11 +1,5 @@
 ﻿#include "Task 6.1.h"
 
-ostream& operator<<(ostream& out, ArtObject const& obj)
-{
-	obj.Print();
-	return out;
-}
-
 int main()
 {
 	cout << "Check for coins\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";

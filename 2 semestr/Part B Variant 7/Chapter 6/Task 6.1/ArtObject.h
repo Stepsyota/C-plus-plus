@@ -25,4 +25,11 @@ public:
 
 	virtual void pop_object();
 	virtual void Print() const;
+
+
+	friend std::ostream& operator<<(std::ostream& out, const ArtObject& obj)
+	{
+		obj.Print();
+		return out;
+	}
 };
