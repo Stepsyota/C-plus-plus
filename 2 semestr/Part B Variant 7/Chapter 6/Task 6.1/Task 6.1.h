@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include "Some Constants.h"
-#include <iostream>
 #include "ArtObject.h"
 #include "AplliedArtObject.h"
 #include "Coin.h"

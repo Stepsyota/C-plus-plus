@@ -82,12 +82,12 @@ void Coin::pop_object()
 	this->what_is_depicted = new char[2] {"-"};
 	this->value = 0;
 }
-void Coin::Print() const
+void Coin::print() const
 
 {
 	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	cout << "Category: Coin\n";
-	AplliedArtObject::Print();
+	AplliedArtObject::print();
 	cout << "What is depicted:\t" << this->what_is_depicted << endl;
 	cout << "Value:\t\t\t" << this->value << " rub" << endl;
 	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";

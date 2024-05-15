@@ -122,9 +122,9 @@ void AplliedArtObject::pop_object()
 	this->year_of_start_of_use = 0;
 	this->year_of_end_of_use = 0;
 }
-void AplliedArtObject::Print() const
+void AplliedArtObject::print() const
 {
-	ArtObject::Print();
+	ArtObject::print();
 	cout << "Material:\t\t" << this->material << endl;
 	cout << "Number of copies:\t" << this->number_of_copies << endl;
 	cout << "Year of start of use:\t" << this->year_of_start_of_use << " year" << endl;

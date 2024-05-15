@@ -26,5 +26,5 @@ public:
 	int get_year_of_end_of_use() const;
 
 	virtual void pop_object() override;
-	virtual void Print() const override;
+	virtual void print() const override;
 };

@@ -24,12 +24,12 @@ public:
 	char* get_designation() const;
 
 	virtual void pop_object();
-	virtual void Print() const;
+	virtual void print() const;
 
 
 	friend std::ostream& operator<<(std::ostream& out, const ArtObject& obj)
 	{
-		obj.Print();
+		obj.print();
 		return out;
 	}
 };

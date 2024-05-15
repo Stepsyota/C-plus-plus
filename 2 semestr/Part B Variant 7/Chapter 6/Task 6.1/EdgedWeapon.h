@@ -20,5 +20,5 @@ public:
 	double get_degree_of_sharpening() const;
 
 	void pop_object() override;
-	void Print() const override;
+	void print() const override;
 };

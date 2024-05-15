@@ -72,11 +72,11 @@ void Photo::pop_object()
 	this->photo_format = new char[2] {"-"};
 	this->color_photo = 0;
 }
-void Photo::Print() const
+void Photo::print() const
 {
 	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	cout << "Category: Photo\n";
-	VisualArtObject::Print();
+	VisualArtObject::print();
 	cout << "Photo format:\t\t" << this->photo_format << endl;
 	cout << "Color photo:\t\t"; if (this->color_photo) { cout << "True\n"; }
 	else { cout << "False\n"; };

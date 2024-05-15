@@ -82,11 +82,11 @@ void Painting::pop_object()
 	this->type_of_paint = new char[2] {"-"};
 	this->dimensions = new char[2] {"-"};
 }
-void Painting::Print() const
+void Painting::print() const
 {
 	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	cout << "Category: Painting\n";
-	VisualArtObject::Print();
+	VisualArtObject::print();
 	cout << "Type of paint:\t\t" << this->type_of_paint << endl;
 	cout << "Dimensions:\t\t" << this->dimensions << endl;
 	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";

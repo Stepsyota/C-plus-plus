@@ -82,11 +82,11 @@ void Sculpture::pop_object()
 	this->material = new char[2] {"-"};
 	this->dimensions = new char[2] {"-"};
 }
-void Sculpture::Print() const
+void Sculpture::print() const
 {
 	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	cout << "Category: Sculpture\n";
-	VisualArtObject::Print();
+	VisualArtObject::print();
 	cout << "Material:\t\t" << this->material << endl;
 	cout << "Dimensions:\t\t" << this->dimensions << endl;
 	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";

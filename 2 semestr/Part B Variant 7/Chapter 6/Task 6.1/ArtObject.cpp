@@ -123,7 +123,7 @@ void ArtObject::pop_object()
 	this->place_of_creation = new char[2] {"-"};
 	this->time_of_creation = 0;
 }
-void ArtObject::Print() const
+void ArtObject::print() const
 {
 	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	cout << "Designation:\t\t" << this->designation << endl;

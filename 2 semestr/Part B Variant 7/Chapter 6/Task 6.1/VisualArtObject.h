@@ -19,5 +19,5 @@ public:
 	char* get_what_is_depicted() const;
 
 	virtual void pop_object() override;
-	virtual void Print() const override;
+	virtual void print() const override;
 };

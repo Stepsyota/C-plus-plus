@@ -20,5 +20,5 @@ public:
 	bool get_color_photo() const;
 
 	void pop_object() override;
-	void Print() const override;
+	void print() const override;
 };

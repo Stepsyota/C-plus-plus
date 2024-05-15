@@ -78,11 +78,11 @@ void EdgedWeapon::pop_object()
 	this->type = new char[2] {"-"};
 	this->degree_of_sharpening = 0;
 }
-void EdgedWeapon::Print() const
+void EdgedWeapon::print() const
 {
 	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	cout << "Category: EdgedWeapon\n";
-	AplliedArtObject::Print();
+	AplliedArtObject::print();
 	cout << "Type of edged weapon:\t" << this->type << endl;
 	cout << "Degree of sharpening:\t" << this->degree_of_sharpening << " degrees" << endl;
 	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
