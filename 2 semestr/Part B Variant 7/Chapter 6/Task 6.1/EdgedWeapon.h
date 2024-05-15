@@ -21,11 +21,4 @@ public:
 
 	void pop_object() override;
 	void Print() const override;
-
-
-	friend std::ostream& operator<<(std::ostream& out, const EdgedWeapon& obj)
-	{
-		obj.Print();
-		return out;
-	}
 };

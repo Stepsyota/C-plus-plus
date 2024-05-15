@@ -105,5 +105,9 @@ int main()
 	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	
 	cout << coin4 << endl;
+	cout << photo4 << endl;
+	cout << weap4 << endl;
+	cout << scupl4 << endl;
+	cout << paint4 << endl;
 	return 0;
 }

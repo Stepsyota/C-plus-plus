@@ -20,11 +20,4 @@ public:
 
 	virtual void pop_object() override;
 	virtual void Print() const override;
-
-
-	friend std::ostream& operator<<(std::ostream& out, const VisualArtObject& obj)
-	{
-		obj.Print();
-		return out;
-	}
 };
