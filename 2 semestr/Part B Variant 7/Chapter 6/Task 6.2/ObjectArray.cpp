@@ -19,6 +19,7 @@ void ObjectArray::output_array() const
 	if (seq == nullptr)
 	{
 		cout << "The array is empty\n";
+		cout << "=============================================================================\n";
 		return;
 	}
 	for (int i = 0; i < this->size; ++i)
@@ -83,12 +84,11 @@ void ObjectArray::operator = (ObjectArray&& other)
 	for (int i = 0; i < this->size; ++i)
 	{
 		this->seq[i] = other.seq[i];
-		//other.seq[i] = 0;
 	}
 	other.pop_seq();
 }
 
-ObjectArray::~ObjectArray()	// Деструктор
+ObjectArray::~ObjectArray()
 {
 	pop_seq();
 }
@@ -101,10 +101,11 @@ bool ObjectArray::empty() const
 void ObjectArray::increase_capacity()
 {
 	int new_capacity = 2 * capacity;
-	ArtObject** new_seq = new ArtObject*[capacity];
+	ArtObject** new_seq = new ArtObject*[new_capacity];
 	for (int i = 0; i < capacity; ++i)
 	{
 		new_seq[i] = seq[i];
+		seq[i] = nullptr;
 		delete seq[i];
 	}
 	delete[] seq;
@@ -122,14 +123,11 @@ void ObjectArray::pop_back()
 
 void ObjectArray::pop_seq()
 {
-	for (int i = 0; i < this->size; ++i)
-	{
-		delete this->seq[i];
-	}
 	if (seq != nullptr)
 	{
-		delete[] this->seq;
+		delete[] seq;
 	}
+	seq = nullptr;
 	size = 0;
 	capacity = 0;
 }

@@ -25,6 +25,7 @@ public:
 	void output_array() const;
 
 	bool empty() const;
+
 	template <class T>
 	void push_back(T new_element)
 	{
@@ -40,6 +41,7 @@ public:
 		seq[size] = element;
 		size++;
 	}
+
 	template <class T>
 	void push_after(T new_element, int index)
 	{
@@ -63,7 +65,7 @@ public:
 			size++;
 			return;
 		}
-		
+
 		for (int i = size + 1; i > index; --i)
 		{
 			seq[i] = seq[i - 1];
