@@ -135,7 +135,7 @@
     <ClCompile Include="..\Task 6.1\Photo.cpp" />
     <ClCompile Include="..\Task 6.1\Sculpture.cpp" />
     <ClCompile Include="..\Task 6.1\VisualArtObject.cpp" />
-    <ClCompile Include="ObjectList.cpp" />
+    <ClCompile Include="ObjectArray.cpp" />
     <ClCompile Include="Task 6.2.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +148,8 @@
     <ClInclude Include="..\Task 6.1\Sculpture.h" />
     <ClInclude Include="..\Task 6.1\Some Constants.h" />
     <ClInclude Include="..\Task 6.1\VisualArtObject.h" />
+    <ClInclude Include="ObjectArray.h" />
+    <ClInclude Include="Task 6.2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
