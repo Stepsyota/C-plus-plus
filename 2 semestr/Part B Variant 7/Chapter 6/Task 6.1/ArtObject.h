@@ -26,7 +26,6 @@ public:
 	virtual void pop_object();
 	virtual void print() const;
 
-
 	friend std::ostream& operator<<(std::ostream& out, const ArtObject& obj)
 	{
 		obj.print();
