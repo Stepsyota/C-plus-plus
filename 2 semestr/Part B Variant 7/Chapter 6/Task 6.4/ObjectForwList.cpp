@@ -193,7 +193,7 @@ void ObjectForwardList::copy_list(const ObjectForwardList& other)
 	this->tail = nullptr;
 	for (Node* n = other.get_head(); n; n = n->next)
 	{
-		ArtObject* new_object = new ArtObject(*n->object);
+		ArtObject* new_object(n->object);
 		Node* item = new Node(new_object, nullptr);
 		if (!this->head)
 		{
