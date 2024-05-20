@@ -87,3 +87,8 @@ void EdgedWeapon::print() const
 	cout << "Degree of sharpening:\t" << this->degree_of_sharpening << " degrees" << endl;
 	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 }
+
+ArtObject* EdgedWeapon::clone() const
+{
+	return new EdgedWeapon(*this);
+}

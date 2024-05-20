@@ -82,3 +82,8 @@ void Photo::print() const
 	else { cout << "False\n"; };
 	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 }
+
+ArtObject* Photo::clone() const
+{
+	return new Photo(*this);
+}

@@ -20,4 +20,6 @@ public:
 
 	virtual void pop_object() override;
 	virtual void print() const override;
+
+	virtual ArtObject* clone() const override = 0;
 };

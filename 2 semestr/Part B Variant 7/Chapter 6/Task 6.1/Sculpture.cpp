@@ -91,3 +91,8 @@ void Sculpture::print() const
 	cout << "Dimensions:\t\t" << this->dimensions << endl;
 	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 }
+
+ArtObject* Sculpture::clone() const
+{
+	return new Sculpture(*this);
+}

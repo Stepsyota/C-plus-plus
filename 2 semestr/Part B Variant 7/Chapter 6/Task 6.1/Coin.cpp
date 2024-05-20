@@ -92,3 +92,8 @@ void Coin::print() const
 	cout << "Value:\t\t\t" << this->value << " rub" << endl;
 	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 }
+
+ArtObject* Coin::clone() const
+{
+	return new Coin(*this);
+}

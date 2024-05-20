@@ -91,3 +91,8 @@ void Painting::print() const
 	cout << "Dimensions:\t\t" << this->dimensions << endl;
 	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 }
+
+ArtObject* Painting::clone() const
+{
+	return new Painting(*this);
+}

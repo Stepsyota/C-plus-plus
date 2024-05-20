@@ -21,4 +21,6 @@ public:
 
 	void pop_object() override;
 	void print() const override;
+
+	ArtObject* clone() const override;
 };
