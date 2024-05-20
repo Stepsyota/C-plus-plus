@@ -188,12 +188,10 @@ void ObjectForwardList::clear()
 
 void ObjectForwardList::copy_list(const ObjectForwardList& other)
 {
-	this->size = 0;
-	this->head = nullptr;
-	this->tail = nullptr;
+	clear();
 	for (Node* n = other.get_head(); n; n = n->next)
 	{
-		ArtObject* new_object(n->object);
+		ArtObject* new_object = n->object->clone();
 		Node* item = new Node(new_object, nullptr);
 		if (!this->head)
 		{
