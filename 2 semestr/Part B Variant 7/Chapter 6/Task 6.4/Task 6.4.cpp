@@ -18,6 +18,7 @@ int main()
     cout << "List 1:\n";
     ObjArr1.output_list();
     //ObjArr1.pop_front();
+    //cout << "Obj 2:\n";
     //obj2.print();
     //cout << "List 1:\n";
     //ObjArr1.output_list();
